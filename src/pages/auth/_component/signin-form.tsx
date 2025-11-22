@@ -84,7 +84,7 @@ const SignInForm = ({
                   <FormLabel className="!font-normal">Email</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="subscribe2techwithemma@gmail.com"
+                      placeholder="enter your email hare..."
                       {...field}
                     />
                   </FormControl>
