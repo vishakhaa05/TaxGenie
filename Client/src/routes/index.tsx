@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   authenticationRoutePaths,
+  publicAppRoutePaths,
   protectedRoutePaths,
 } from "./common/routes";
 import AppLayout from "@/layouts/app-layout";
@@ -14,7 +15,8 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AuthRoute />}>
+        {/* Authentication routes (Login, Signup) */}
+        <Route element={<AuthRoute />}>
           <Route element={<BaseLayout />}>
             {authenticationRoutePaths.map((route) => (
               <Route
@@ -25,9 +27,20 @@ function AppRoutes() {
             ))}
           </Route>
         </Route>
-        {/* Protected Route */}
-        <Route element={<ProtectedRoute />}>
-          <Route element={<AppLayout />}>
+
+        {/* Main Application Shell (Accessible to both Guests and Users) */}
+        <Route element={<AppLayout />}>
+          {/* Public routes (Calculators, Dashboard Overview, etc.) */}
+          {publicAppRoutePaths.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
+
+          {/* Protected routes (Settings, Saved Items, Transactions, Admin) */}
+          <Route element={<ProtectedRoute />}>
             {protectedRoutePaths.map((route) => (
               <Route
                 key={route.path}
@@ -36,7 +49,7 @@ function AppRoutes() {
               >
                 {route.children?.map((childRoute) => (
                   <Route
-                    key={childRoute.path || 'index'}
+                    key={childRoute.path || "index"}
                     index={childRoute.index}
                     path={childRoute.path}
                     element={childRoute.element}
@@ -47,8 +60,8 @@ function AppRoutes() {
           </Route>
         </Route>
 
-        {/* Catch-all for undefined routes */}
-        <Route path="*" element={<>404</>} />
+        {/* Catch-all */}
+        <Route path="*" element={<AppLayout />} />
       </Routes>
     </BrowserRouter>
   );

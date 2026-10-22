@@ -3,74 +3,82 @@ import TransactionModel from "../../models/transaction.model";
 import { calculateNextOccurrence } from "../../utils/helper";
 
 export const processRecurringTransactions = async () => {
+  if (mongoose.connection.readyState !== 1) {
+    return { success: true, processedCount: 0, failedCount: 0 };
+  }
   const now = new Date();
   let processedCount = 0;
   let failedCount = 0;
 
   try {
-    const transactionCursor = TransactionModel.find({
+    const dueTransactions = await TransactionModel.find({
       isRecurring: true,
       nextRecurringDate: { $lte: now },
-    }).cursor();
+    }).limit(500);
 
-    console.log("Starting recurring proccess");
+    console.log(`Starting recurring process for ${dueTransactions.length} transactions`);
 
-    for await (const tx of transactionCursor) {
-      const nextDate = calculateNextOccurrence(
-        tx.nextRecurringDate!,
-        tx.recurringInterval!
-      );
+    if (dueTransactions.length === 0) {
+      return { success: true, processedCount: 0, failedCount: 0 };
+    }
 
-      const session = await mongoose.startSession();
-      try {
-        await session.withTransaction(
-          async () => {
-            // console.log(tx, "transaction");
-            await TransactionModel.create(
-              [
-                {
-                  ...tx.toObject(),
-                  _id: new mongoose.Types.ObjectId(),
-                  title: `Recurring - ${tx.title}`,
-                  date: tx.nextRecurringDate,
-                  isRecurring: false,
-                  nextRecurringDate: null,
-                  recurringInterval: null,
-                  lastProcessed: null,
-                  createdAt: undefined,
-                  updatedAt: undefined,
-                },
-              ],
-              { session }
-            );
+    const batchSize = 50;
+    for (let i = 0; i < dueTransactions.length; i += batchSize) {
+      const batch = dueTransactions.slice(i, i + batchSize);
+      const operations: any[] = [];
 
-            await TransactionModel.updateOne(
-              { _id: tx._id },
-              {
-                $set: {
-                  nextRecurringDate: nextDate,
-                  lastProcessed: now,
-                },
-              },
-              { session }
-            );
-          },
-          {
-            maxCommitTimeMS: 20000,
-          }
+      for (const tx of batch) {
+        const nextDate = calculateNextOccurrence(
+          tx.nextRecurringDate!,
+          tx.recurringInterval!
         );
 
-        processedCount++;
-      } catch (error: any) {
-        failedCount++;
-        console.log(`Failed reccurring tx: ${tx._id}`, error);
-      } finally {
-        await session.endSession();
+        const txObj = tx.toObject();
+        delete (txObj as any)._id;
+        delete (txObj as any).id;
+
+        operations.push({
+          insertOne: {
+            document: {
+              ...txObj,
+              title: `Recurring - ${tx.title}`,
+              date: tx.nextRecurringDate,
+              isRecurring: false,
+              nextRecurringDate: null,
+              recurringInterval: null,
+              lastProcessed: null,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            },
+          },
+        });
+
+        operations.push({
+          updateOne: {
+            filter: { _id: tx._id },
+            update: {
+              $set: {
+                nextRecurringDate: nextDate,
+                lastProcessed: now,
+              },
+            },
+          },
+        });
+      }
+
+      try {
+        await TransactionModel.bulkWrite(operations, { ordered: false });
+        processedCount += batch.length;
+      } catch (batchError) {
+        console.error("Bulk write error for recurring transactions batch:", batchError);
+        failedCount += batch.length;
       }
     }
 
-    console.log(`✅Processed: ${processedCount} transaction`);
-    console.log(`❌ Failed: ${failedCount} transaction`);
+    console.log(`✅ Processed: ${processedCount} recurring transactions`);
+    if (failedCount > 0) {
+      console.log(`❌ Failed: ${failedCount} recurring transactions`);
+    }
 
     return {
       success: true,
@@ -78,8 +86,7 @@ export const processRecurringTransactions = async () => {
       failedCount,
     };
   } catch (error: any) {
-    console.error("Error occur processing transaction", error);
-
+    console.error("Error occurred processing recurring transactions:", error);
     return {
       success: false,
       error: error?.message,

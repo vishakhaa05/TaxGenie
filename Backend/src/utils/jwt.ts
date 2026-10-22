@@ -22,6 +22,11 @@ const accessTokenSignOptions: SignOptsAndSecret = {
   secret: Env.JWT_SECRET,
 };
 
+export const refreshTokenSignOptions: SignOptsAndSecret = {
+  expiresIn: (Env.JWT_REFRESH_EXPIRES_IN || "7d") as TimeString,
+  secret: Env.JWT_REFRESH_SECRET,
+};
+
 export const signJwtToken = (
   payload: AccessTokenPayload,
   options?: SignOptsAndSecret
@@ -43,4 +48,15 @@ export const signJwtToken = (
     token,
     expiresAt,
   };
+};
+
+export const verifyJwtToken = <TPayload extends object = AccessTokenPayload>(
+  token: string,
+  secret: string = Env.JWT_SECRET
+): TPayload | null => {
+  try {
+    return jwt.verify(token, secret) as TPayload;
+  } catch {
+    return null;
+  }
 };

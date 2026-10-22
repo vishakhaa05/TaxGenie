@@ -40,7 +40,7 @@ export const getAllTransactionController = asyncHandler(
   async (req: Request, res: Response) => {
     const userId = req.user?._id;
 
-    const { keyword, type, recurringStatus } = req.query;
+    const { keyword, type, recurringStatus, mode } = req.query;
 
     const filters = {
       ...(keyword && { keyword: keyword as string }),
@@ -48,6 +48,7 @@ export const getAllTransactionController = asyncHandler(
       ...(recurringStatus && {
         recurringStatus: recurringStatus as "RECURRING" | "NON_RECURRING",
       }),
+      ...(mode && { mode: mode as "PERSONAL" | "BUSINESS" }),
     };
 
     const pagination = {

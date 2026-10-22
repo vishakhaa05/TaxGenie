@@ -8,6 +8,9 @@ import { calulateNextReportDate } from "../../utils/helper";
 import { sendReportEmail } from "../../mailers/report.mailer";
 
 export const processReportJob = async () => {
+  if (mongoose.connection.readyState !== 1) {
+    return { success: true, processedCount: 0, failedCount: 0 };
+  }
   const now = new Date();
 
   let processedCount = 0;

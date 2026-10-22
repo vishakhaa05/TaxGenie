@@ -123,3 +123,5 @@ export const {
   useDeleteTransactionMutation,
   useBulkDeleteTransactionMutation,
 } = transactionApi;
+
+export const useGetAllTransactionQuery = useGetAllTransactionsQuery;

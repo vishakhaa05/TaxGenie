@@ -71,6 +71,11 @@ const formSchema = z.object({
     ])
     .nullable()
     .optional(),
+  mode: z.enum(["PERSONAL", "BUSINESS"]),
+  isTaxDeductible: z.boolean(),
+  deductionSection: z.enum(["80C", "80D", "HRA", "HOME_LOAN", "OTHER"]).nullable().optional(),
+  clientOrVendor: z.string().optional(),
+  gstRate: z.string().optional(),
   description: z.string().optional(),
   receiptUrl: z.string().optional(),
 });
@@ -109,6 +114,11 @@ const TransactionForm = (props: {
       paymentMethod: "",
       isRecurring: false,
       frequency: null,
+      mode: "PERSONAL",
+      isTaxDeductible: false,
+      deductionSection: null,
+      clientOrVendor: "",
+      gstRate: "0",
       description: "",
       receiptUrl: "",
     },
@@ -125,6 +135,11 @@ const TransactionForm = (props: {
         paymentMethod: editData.paymentMethod,
         isRecurring: editData.isRecurring,
         frequency: editData.recurringInterval,
+        mode: editData.mode || "PERSONAL",
+        isTaxDeductible: editData.isTaxDeductible || false,
+        deductionSection: editData.deductionSection || null,
+        clientOrVendor: editData.clientOrVendor || "",
+        gstRate: editData.gstRate ? editData.gstRate.toString() : "0",
         description: editData.description,
       });
     }
@@ -149,6 +164,11 @@ const TransactionForm = (props: {
       paymentMethod: data.paymentMethod || "",
       isRecurring: false,
       frequency: null,
+      mode: "PERSONAL",
+      isTaxDeductible: false,
+      deductionSection: null,
+      clientOrVendor: "",
+      gstRate: "0",
       description: data.description || "",
       receiptUrl: data.receiptUrl || "",
     });
@@ -156,7 +176,6 @@ const TransactionForm = (props: {
 
   // Handle form submission
   const onSubmit = (values: FormValues) => {
-    // if (isCreating || isUpdating) return;
     console.log("Form submitted:", values);
     const payload = {
       title: values.title,
@@ -168,6 +187,11 @@ const TransactionForm = (props: {
       date: values.date.toISOString(),
       isRecurring: values.isRecurring || false,
       recurringInterval: values.frequency || null,
+      mode: values.mode,
+      isTaxDeductible: values.isTaxDeductible,
+      deductionSection: values.isTaxDeductible ? values.deductionSection : null,
+      clientOrVendor: values.clientOrVendor || undefined,
+      gstRate: values.gstRate ? Number(values.gstRate) : 0,
     };
     if (isEdit && transactionId) {
       updateTransaction({ id: transactionId, transaction: payload })
@@ -481,6 +505,140 @@ const TransactionForm = (props: {
                 )}
               />
             )}
+            {/* Account Mode (Personal vs Business) */}
+            <FormField
+              control={form.control}
+              name="mode"
+              render={({ field }) => (
+                <FormItem className="space-y-1">
+                  <FormLabel>Account Mode</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    value={field.value}
+                    disabled={isScanning}
+                  >
+                    <FormControl className="w-full">
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Mode" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="PERSONAL">Personal Finance</SelectItem>
+                      <SelectItem value="BUSINESS">Business Finance</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Tax Deductible Toggle */}
+            <FormField
+              control={form.control}
+              name="isTaxDeductible"
+              render={({ field }) => (
+                <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4 bg-emerald-50/30 dark:bg-emerald-950/10">
+                  <div className="space-y-0.5">
+                    <FormLabel className="text-[14.5px] font-semibold text-emerald-800 dark:text-emerald-300">
+                      Tax Deductible Expense
+                    </FormLabel>
+                    <p className="text-xs text-muted-foreground">
+                      Mark if this expense qualifies for Income Tax deduction (80C, 80D, HRA, etc.)
+                    </p>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      disabled={isScanning}
+                      checked={field.value}
+                      className="cursor-pointer"
+                      onCheckedChange={(checked) => {
+                        field.onChange(checked);
+                        if (checked) {
+                          form.setValue("deductionSection", "80C");
+                        } else {
+                          form.setValue("deductionSection", null);
+                        }
+                      }}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            {/* Deduction Section Selector */}
+            {form.watch("isTaxDeductible") && (
+              <FormField
+                control={form.control}
+                name="deductionSection"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Deduction Section (Old Regime)</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value ?? undefined}
+                      disabled={isScanning}
+                    >
+                      <FormControl className="w-full">
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select Section" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="80C">Section 80C (PPF, ELSS, EPF, LIC)</SelectItem>
+                        <SelectItem value="80D">Section 80D (Health Insurance)</SelectItem>
+                        <SelectItem value="HRA">HRA Exemption</SelectItem>
+                        <SelectItem value="HOME_LOAN">Home Loan Interest (Sec 24b)</SelectItem>
+                        <SelectItem value="OTHER">Other Deductions (80E, 80G, NPS)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+
+            {/* Business Specific Fields */}
+            {form.watch("mode") === "BUSINESS" && (
+              <>
+                <FormField
+                  control={form.control}
+                  name="clientOrVendor"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Client / Vendor Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="e.g. Acme Corp / Vendor Name"
+                          disabled={isScanning}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="gstRate"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>GST Rate (%)</FormLabel>
+                      <FormControl>
+                        <Input
+                          type="number"
+                          placeholder="18"
+                          disabled={isScanning}
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </>
+            )}
+
             {/* Description */}
             <FormField
               control={form.control}

@@ -1,0 +1,170 @@
+{
+  "common": {
+    "appName": "TaxGenie",
+    "appTagline": "Smart Tax & GST Engine",
+    "disclaimer": "Estimates only. Please consult a CA before filing.",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "logout": "Log Out",
+    "profile": "Profile",
+    "settings": "Settings",
+    "newCalculation": "New Calculation",
+    "filters": "Filters",
+    "taxYear": "FY 2026-27",
+    "taxYearLong": "FY 2026-27 (AY 2027-28)",
+    "save": "Save",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "viewAll": "View All",
+    "status": "Status",
+    "actions": "Actions",
+    "searchPlaceholder": "Search tax rules, sections, calculators...",
+    "notifications": "Notifications",
+    "help": "Help & Guidance",
+    "themeLight": "Light Mode",
+    "themeDark": "Dark Mode",
+    "themeSystem": "System Theme",
+    "language": "Language",
+    "loading": "Loading...",
+    "guestGreeting": "Welcome to TaxGenie 👋",
+    "guestSubtext": "Clear, beginner-friendly tax & GST answers in under 2 minutes. No CA needed."
+  },
+  "nav": {
+    "pages": "PAGES",
+    "more": "MORE",
+    "dashboard": "Dashboard",
+    "overview": "Overview",
+    "taxSummary": "Tax Summary",
+    "gstSummary": "GST Summary",
+    "incomeTax": "Income Tax",
+    "calculator": "Calculator",
+    "compareRegimes": "Compare Regimes",
+    "history": "History",
+    "gst": "GST",
+    "gstCalculator": "GST Calculator",
+    "invoices": "Invoices",
+    "aiAssistant": "AI Assistant",
+    "deadlines": "Deadlines",
+    "learn": "Learn (Glossary)",
+    "account": "Account",
+    "admin": "Admin: Tax Rules"
+  },
+  "greeting": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening",
+    "subtext": "Here is your tax picture today (FY 2026-27):"
+  },
+  "kpis": {
+    "estimatedTax": {
+      "caption": "TAX ESTIMATE",
+      "title": "Estimated tax (best regime)",
+      "tooltip": "The lowest estimated income tax you pay between the Old and New regimes for FY 2026-27.",
+      "badge": "New Regime (Best)"
+    },
+    "taxSaved": {
+      "caption": "TAX SAVINGS",
+      "title": "Tax saved vs other regime",
+      "tooltip": "How much hard-earned money you save by choosing the New Regime instead of the Old Regime.",
+      "badge": "Saved with New Regime"
+    },
+    "gstCollected": {
+      "caption": "GST POSITION",
+      "title": "GST collected this month",
+      "tooltip": "Net GST payable after adjusting eligible Input Tax Credit (ITC) for this tax period.",
+      "badge": "ITC Adjusted"
+    }
+  },
+  "charts": {
+    "regimeComparison": {
+      "title": "Old vs New Regime",
+      "caption": "DIRECT TAX COMPARISON",
+      "subtitle": "Estimated tax liability across income slabs",
+      "legendNew": "New Regime (Budget 2025)",
+      "legendOld": "Old Regime",
+      "tooltip": "New regime offers 0 tax up to ₹12 Lakhs taxable income under Sec 87A rebate.",
+      "totalLabel": "Annual Comparison"
+    },
+    "taxOverTime": {
+      "title": "Tax trajectory over time",
+      "caption": "HISTORICAL TREND",
+      "subtitle": "Current FY 2026-27 vs previous FY 2025-26",
+      "badge": "-18% tax vs last year",
+      "legendCurrent": "Current Year (FY 2026-27)",
+      "legendPrevious": "Previous Year (FY 2025-26)",
+      "tooltip": "Your effective tax rate decreased due to enhanced standard deductions."
+    },
+    "incomeSources": {
+      "title": "Where your income comes from",
+      "caption": "INCOME BREAKDOWN",
+      "subtitle": "Distribution by earnings categories",
+      "salary": "Salaried Income",
+      "business": "Freelance / Business",
+      "interest": "Savings & FD Interest",
+      "other": "Capital Gains / Other",
+      "tooltip": "Different income streams may have specific deductions and standard allowances."
+    }
+  },
+  "activity": {
+    "title": "Recent activity",
+    "caption": "CALCULATIONS & INVOICES",
+    "subtitle": "Latest saved calculations and generated GST invoices",
+    "columns": {
+      "type": "Type",
+      "date": "Date",
+      "amount": "Gross Amount",
+      "taxGst": "Tax / GST",
+      "status": "Status"
+    },
+    "types": {
+      "salaryCalc": "Salaried Tax Calculation",
+      "freelanceCalc": "Freelance 44ADA Calculation",
+      "gstInvoice": "GST Tax Invoice #1042",
+      "itcClaim": "GST ITC Reconciliation"
+    },
+    "status": {
+      "optimized": "Optimized",
+      "settled": "Settled",
+      "pending": "Draft"
+    },
+    "empty": "No calculations yet. Try your first one in under 2 minutes!"
+  },
+  "deadlines": {
+    "title": "Upcoming Tax Deadlines",
+    "badge": "3 Days Left",
+    "itrSalaried": "ITR Filing Due (Salaried): July 31, 2026",
+    "gstr3b": "GSTR-3B Monthly Return: 20th of this month",
+    "advTaxQ2": "Advance Tax Q2 Installment: September 15, 2026"
+  },
+  "tax": {
+    "step": {
+      "grossIncome": "Gross Total Income",
+      "standardDeduction": "Standard Deduction (Salary)",
+      "deductions": "Total Chapter VI-A Deductions",
+      "taxableIncome": "Net Taxable Income",
+      "slabTax": "Tax Computed as per Slabs",
+      "rebate": "Rebate under Section 87A",
+      "marginalRelief": "Marginal Relief Adjustment",
+      "taxAfterRebate": "Tax Payable after Rebate & Relief",
+      "cess": "Health & Education Cess (4%)",
+      "totalTax": "Total Income Tax Liability"
+    },
+    "warning": {
+      "DEDUCTION_CAPPED": "Deduction for {{section}} is capped at ₹{{allowed}} (you entered ₹{{entered}}).",
+      "SURCHARGE_NOT_INCLUDED": "Taxable income exceeds ₹50 Lakhs. Surcharge is not included in this v1 estimate.",
+      "REBATE_APPLIED": "Section 87A rebate applied. Your tax payable is ₹0.",
+      "MARGINAL_RELIEF_APPLIED": "Marginal relief applied. Tax before cess is capped at excess income over threshold.",
+      "OTHER_INCOME_NO_STANDARD_DEDUCTION": "Standard deduction applies to salary only, not other income sources."
+    }
+  },
+  "gst": {
+    "step": {
+      "base": "Taxable Base Amount",
+      "cgst": "Central GST (CGST)",
+      "sgst": "State GST (SGST)",
+      "igst": "Integrated GST (IGST)",
+      "total": "Total Amount",
+      "roundOff": "Round-off Adjustment"
+    }
+  }
+}

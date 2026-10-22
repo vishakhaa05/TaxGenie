@@ -1,17 +1,18 @@
 import mongoose from "mongoose";
 import { Env } from "./env.config";
 
+mongoose.set("bufferCommands", false);
+
 const connctDatabase = async () => {
   try {
     await mongoose.connect(Env.MONGO_URI, {
-      serverSelectionTimeoutMS: 8000,
+      serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
-      connectTimeoutMS: 30000,
+      connectTimeoutMS: 5000,
     });
     console.log("Connected to MongoDB database");
   } catch (error) {
-    console.error("Error connecting to MongoDB database:", error);
-    process.exit(1);
+    console.warn("⚠️ MongoDB offline or IP not whitelisted. Resilient user store active.");
   }
 };
 

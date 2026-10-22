@@ -1,0 +1,66 @@
+[
+  {
+    "id": "usr_1792650981450_7k6ke",
+    "_id": "usr_1792650981450_7k6ke",
+    "name": "Test User",
+    "email": "testuser22@example.com",
+    "password": "$2b$10$ZGugFLbwC/spr83/6hTET.fdDUjIIu04y/0jSI9F9354nZoJAmqiK",
+    "createdAt": "2026-10-22T06:36:21.450Z"
+  },
+  {
+    "id": "usr_1792651209208_s644r",
+    "_id": "usr_1792651209208_s644r",
+    "name": "Vishakha",
+    "email": "testuser@taxgenie.in",
+    "password": "$2b$10$bgMSYrI8PpfNSquNZrxwTOQBHrqIMWyHsDWKuVCJ2nepn35GCFLhy",
+    "createdAt": "2026-10-22T06:40:09.208Z"
+  },
+  {
+    "id": "usr_1792651606628_xlvqk",
+    "_id": "usr_1792651606628_xlvqk",
+    "name": "Aarav Sharma",
+    "email": "aarav@taxgenie.in",
+    "password": "$2b$10$TIXyl6woDSLIwOqtsxjOU.vANvunilN1NB4O72hmkXWICO8iWpD3G",
+    "createdAt": "2026-10-22T06:46:46.628Z"
+  },
+  {
+    "id": "usr_1792670387181_f8zai",
+    "_id": "usr_1792670387181_f8zai",
+    "name": "Real User",
+    "email": "realuser99@taxgenie.test",
+    "password": "$2b$10$lRq9RIY6yJ6NAfm4oNKDkuobMYKjWZkh/eJDI.IYYfGOX82xigjfm",
+    "createdAt": "2026-10-22T11:59:47.182Z"
+  },
+  {
+    "id": "usr_1792671470338_qy8xu",
+    "_id": "usr_1792671470338_qy8xu",
+    "name": "Test User",
+    "email": "testuser2026@taxgenie.test",
+    "password": "$2b$10$56HZLYBPKUbHWfOOmdH2zuIrRDPnjhVOnYsuo1221j22J1CE5uLne",
+    "createdAt": "2026-10-22T12:17:50.338Z"
+  },
+  {
+    "id": "usr_1792671609246_hmoad",
+    "_id": "usr_1792671609246_hmoad",
+    "name": "User Demo",
+    "email": "user2026@test.com",
+    "password": "$2b$10$nl5T7oBjBuOJ/bjF/TCv2uCg2bg9QCTwT5V9KFrZAWP7uMyIYuWUa",
+    "createdAt": "2026-10-22T12:20:09.247Z"
+  },
+  {
+    "id": "usr_1792671790251_agu3c",
+    "_id": "usr_1792671790251_agu3c",
+    "name": "Demo Auditor",
+    "email": "auditor2026@taxgenie.test",
+    "password": "$2b$10$QLc5VVRVaS1oektJsNIRSuTDxZ21wE9OWrNVKq/xKI.g/Z1Emk9FC",
+    "createdAt": "2026-10-22T12:23:10.251Z"
+  },
+  {
+    "id": "usr_1792672561580_vbza6",
+    "_id": "usr_1792672561580_vbza6",
+    "name": "CSV Test User",
+    "email": "csvtester_flow@taxgenie.test",
+    "password": "$2b$10$cgU9cC5I91DKny5XyiQKaeVS5XWF5KIgSa/VjP2AVH/eiv0i80vnS",
+    "createdAt": "2026-10-22T12:36:01.580Z"
+  }
+]

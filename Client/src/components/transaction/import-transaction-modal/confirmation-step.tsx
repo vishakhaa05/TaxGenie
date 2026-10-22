@@ -144,19 +144,39 @@ const ConfirmationStep = ({
     let hasValidationErrors = false;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const results: Partial<any>[] = [];
+    setErrors({});
 
     csvData.forEach((row, index) => {
-      const transaction: Record<string, string> = {};
+      const transaction: Record<string, any> = {};
       // Apply mappings
       Object.entries(mappings).forEach(([csvColumn, transactionField]) => {
         if (transactionField === "Skip" || row[csvColumn] === undefined) return;
-        transaction[transactionField] =
-          transactionField === "amount"
-            ? Number(row[csvColumn])
-            : transactionField === "date"
-              ? new Date(row[csvColumn])
-              : row[csvColumn];
+        const val = row[csvColumn];
+
+        if (transactionField === "amount") {
+          transaction[transactionField] = Number(String(val).replace(/[^0-9.-]+/g, "")) || 0;
+        } else if (transactionField === "date") {
+          const parsedDate = new Date(val);
+          transaction[transactionField] = isNaN(parsedDate.getTime()) ? new Date() : parsedDate;
+        } else if (transactionField === "type") {
+          const typeStr = String(val).trim().toUpperCase();
+          transaction[transactionField] = typeStr === "INCOME" ? _TRANSACTION_TYPE.INCOME : _TRANSACTION_TYPE.EXPENSE;
+        } else if (transactionField === "paymentMethod") {
+          const pmStr = String(val).trim().toUpperCase().replace(/\s+/g, "_");
+          transaction[transactionField] = Object.values(PAYMENT_METHODS_ENUM).includes(pmStr as any) ? pmStr : PAYMENT_METHODS_ENUM.CASH;
+        } else if (transactionField === "category") {
+          transaction[transactionField] = String(val).trim() || "General";
+        } else {
+          transaction[transactionField] = String(val).trim();
+        }
       });
+
+      // Set default values for missing required fields
+      if (!transaction.type) transaction.type = _TRANSACTION_TYPE.EXPENSE;
+      if (!transaction.category) transaction.category = "General";
+      if (!transaction.paymentMethod) transaction.paymentMethod = PAYMENT_METHODS_ENUM.CASH;
+      if (!transaction.date) transaction.date = new Date();
+
       try {
         const validated = transactionSchema.parse(transaction);
         results.push(validated);

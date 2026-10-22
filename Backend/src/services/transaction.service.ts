@@ -1,4 +1,5 @@
 import axios from "axios";
+import mongoose from "mongoose";
 import TransactionModel, {
   TransactionTypeEnum,
 } from "../models/transaction.model";
@@ -51,17 +52,22 @@ export const getAllTransactionService = async (
     keyword?: string;
     type?: keyof typeof TransactionTypeEnum;
     recurringStatus?: "RECURRING" | "NON_RECURRING";
+    mode?: "PERSONAL" | "BUSINESS";
   },
   pagination: {
     pageSize: number;
     pageNumber: number;
   }
 ) => {
-  const { keyword, type, recurringStatus } = filters;
+  const { keyword, type, recurringStatus, mode } = filters;
 
   const filterConditions: Record<string, any> = {
     userId,
   };
+
+  if (mode) {
+    filterConditions.mode = mode;
+  }
 
   if (keyword) {
     filterConditions.$or = [
@@ -85,6 +91,20 @@ export const getAllTransactionService = async (
   const { pageSize, pageNumber } = pagination;
   const skip = (pageNumber - 1) * pageSize;
 
+  if (mongoose.connection.readyState !== 1) {
+    return {
+      transations: [],
+      transactions: [],
+      pagination: {
+        pageSize,
+        pageNumber,
+        totalCount: 0,
+        totalPages: 0,
+        skip,
+      },
+    };
+  }
+
   const [transations, totalCount] = await Promise.all([
     TransactionModel.find(filterConditions)
       .skip(skip)
@@ -97,6 +117,7 @@ export const getAllTransactionService = async (
 
   return {
     transations,
+    transactions: transations,
     pagination: {
       pageSize,
       pageNumber,

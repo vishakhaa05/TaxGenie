@@ -6,10 +6,11 @@ import { useRefreshMutation } from "@/features/auth/authAPI";
 const useAuthExpiration = () => {
   const {
     accessToken,
+    refreshToken: currentRefreshToken,
     expiresAt,
   } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  const [refreshToken] = useRefreshMutation()
+  const [refreshToken] = useRefreshMutation();
 
   useEffect(() => {
     const handleLogout = () => {
@@ -18,25 +19,41 @@ const useAuthExpiration = () => {
     };
 
     const handleTokenRefresh = async () => {
-        try {
-          const {accessToken, expiresAt} = await refreshToken({}).unwrap();
-          dispatch(updateCredentials({accessToken, expiresAt}));
-          console.log("Token refreshed successfully");
-        } catch (error) {
-          console.error("Token refresh failed, logging out...", error);
-          handleLogout();
-        }
-      };
+      try {
+        const res = await refreshToken({
+          refreshToken: currentRefreshToken,
+        }).unwrap();
+        dispatch(
+          updateCredentials({
+            accessToken: res.accessToken,
+            refreshToken: res.refreshToken,
+            expiresAt: res.expiresAt,
+            user: res.user,
+          })
+        );
+        console.log("Token refreshed successfully");
+      } catch (error) {
+        console.error("Token refresh failed, logging out...", error);
+        handleLogout();
+      }
+    };
 
     if (accessToken && expiresAt) {
-        const currentTime = Date.now();
-        const timeUntilExpiration = expiresAt - currentTime;
+      const currentTime = Date.now();
+      const timeUntilExpiration = expiresAt - currentTime;
       if (timeUntilExpiration <= 0) {
         // Token is already expired
-        handleTokenRefresh()
+        handleTokenRefresh();
       } else {
-        // Set a timeout to log out the user when the token expires
-        const timer = setTimeout(handleLogout, timeUntilExpiration);
+        // Max 32-bit signed integer delay for setTimeout is ~24.8 days (2147483647 ms).
+        // Larger values overflow in JavaScript and fire immediately (1ms), causing unintended logouts.
+        const MAX_TIMEOUT_MS = 2147483647;
+        const delay = Math.min(timeUntilExpiration, MAX_TIMEOUT_MS);
+        const timer = setTimeout(() => {
+          if (timeUntilExpiration <= MAX_TIMEOUT_MS) {
+            handleLogout();
+          }
+        }, delay);
         // Cleanup the timer on component unmount or token change
         return () => clearTimeout(timer);
       }

@@ -31,6 +31,11 @@ const SignUpForm = () => {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   });
 
   const onSubmit = (values: FormValues) => {
@@ -54,7 +59,7 @@ const SignUpForm = () => {
         className="flex flex-col gap-6"
       >
         <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-2xl font-bold">Sign up to Acme Inc.</h1>
+          <h1 className="text-2xl font-bold">Sign up to TaxGenie</h1>
           <p className="text-balance text-sm text-muted-foreground">
             Fill information below to sign up
           </p>

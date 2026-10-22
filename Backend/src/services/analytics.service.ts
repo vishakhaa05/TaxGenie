@@ -14,8 +14,30 @@ export const summaryAnalyticsService = async (
   customTo?: Date
 ) => {
   const range = getDateRange(dateRangePreset, customFrom, customTo);
-
   const { from, to, value: rangeValue } = range;
+
+  if (mongoose.connection.readyState !== 1) {
+    return {
+      availableBalance: 0,
+      totalIncome: 0,
+      totalExpenses: 0,
+      savingRate: { percentage: 0, expenseRatio: 0 },
+      transactionCount: 0,
+      percentageChange: {
+        income: 0,
+        expenses: 0,
+        balance: 0,
+        prevPeriodFrom: null,
+        prevPeriodTo: null,
+        previousValues: { incomeAmount: 0, expenseAmount: 0, balanceAmount: 0 },
+      },
+      preset: {
+        ...range,
+        value: rangeValue || DateRangeEnum.ALL_TIME,
+        label: range?.label || "All Time",
+      },
+    };
+  }
 
   const currentPeriodPipeline: PipelineStage[] = [
     {
@@ -258,6 +280,19 @@ export const chartAnalyticsService = async (
   const range = getDateRange(dateRangePreset, customFrom, customTo);
   const { from, to, value: rangeValue } = range;
 
+  if (mongoose.connection.readyState !== 1) {
+    return {
+      chartData: [],
+      totalIncomeCount: 0,
+      totalExpenseCount: 0,
+      preset: {
+        ...range,
+        value: rangeValue || DateRangeEnum.ALL_TIME,
+        label: range?.label || "All Time",
+      },
+    };
+  }
+
   const filter: any = {
     userId: new mongoose.Types.ObjectId(userId),
     ...(from &&
@@ -375,6 +410,18 @@ export const expensePieChartBreakdownService = async (
 ) => {
   const range = getDateRange(dateRangePreset, customFrom, customTo);
   const { from, to, value: rangeValue } = range;
+
+  if (mongoose.connection.readyState !== 1) {
+    return {
+      totalSpent: 0,
+      breakdown: [],
+      preset: {
+        ...range,
+        value: rangeValue || DateRangeEnum.ALL_TIME,
+        label: range?.label || "All Time",
+      },
+    };
+  }
 
   const filter: any = {
     userId: new mongoose.Types.ObjectId(userId),

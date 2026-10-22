@@ -1,0 +1,88 @@
+{
+  "taxYear": "2026-27",
+  "financialYear": "2026-2027",
+  "assessmentYear": "2027-2028",
+  "version": 1,
+  "isActive": true,
+  "cess": 4,
+  "cessRate": 0.04,
+  "roundingToNearestTen": false,
+  "notes": "Income Tax Act 2025 / Budget 2025 provisions. NOTE: These must be re-verified on incometax.gov.in and gst.gov.in before official production launch.",
+  "newRegime": {
+    "slabs": [
+      { "upTo": 400000, "rate": 0, "minIncome": 0, "maxIncome": 400000 },
+      { "upTo": 800000, "rate": 5, "minIncome": 400000, "maxIncome": 800000 },
+      { "upTo": 1200000, "rate": 10, "minIncome": 800000, "maxIncome": 1200000 },
+      { "upTo": 1600000, "rate": 15, "minIncome": 1200000, "maxIncome": 1600000 },
+      { "upTo": 2000000, "rate": 20, "minIncome": 1600000, "maxIncome": 2000000 },
+      { "upTo": 2400000, "rate": 25, "minIncome": 2000000, "maxIncome": 2400000 },
+      { "upTo": null, "rate": 30, "minIncome": 2400000, "maxIncome": null }
+    ],
+    "standardDeduction": 75000,
+    "rebate": {
+      "incomeLimit": 1200000,
+      "maxRebate": "equal to tax payable up to the limit",
+      "marginalRelief": true
+    },
+    "rebateMaxIncome": 1200000,
+    "rebateAmount": 60000,
+    "marginalReliefThreshold": 1200000
+  },
+  "oldRegime": {
+    "slabsByAge": {
+      "below60": [
+        { "upTo": 250000, "rate": 0, "minIncome": 0, "maxIncome": 250000 },
+        { "upTo": 500000, "rate": 5, "minIncome": 250000, "maxIncome": 500000 },
+        { "upTo": 1000000, "rate": 20, "minIncome": 500000, "maxIncome": 1000000 },
+        { "upTo": null, "rate": 30, "minIncome": 1000000, "maxIncome": null }
+      ],
+      "senior": [
+        { "upTo": 300000, "rate": 0, "minIncome": 0, "maxIncome": 300000 },
+        { "upTo": 500000, "rate": 5, "minIncome": 300000, "maxIncome": 500000 },
+        { "upTo": 1000000, "rate": 20, "minIncome": 500000, "maxIncome": 1000000 },
+        { "upTo": null, "rate": 30, "minIncome": 1000000, "maxIncome": null }
+      ],
+      "superSenior": [
+        { "upTo": 500000, "rate": 0, "minIncome": 0, "maxIncome": 500000 },
+        { "upTo": 1000000, "rate": 20, "minIncome": 500000, "maxIncome": 1000000 },
+        { "upTo": null, "rate": 30, "minIncome": 1000000, "maxIncome": null }
+      ]
+    },
+    "standardDeduction": 50000,
+    "rebate": {
+      "incomeLimit": 500000,
+      "maxRebate": 12500
+    },
+    "rebateMaxIncome": 500000,
+    "rebateAmount": 12500,
+    "deductionLimits": {
+      "sec80C": 150000,
+      "sec80CCD1B": 50000,
+      "sec80D_selfFamily": {
+        "normal": 25000,
+        "senior": 50000
+      },
+      "sec80D_parents": {
+        "normal": 25000,
+        "senior": 50000
+      },
+      "homeLoanInterestSelfOccupied": 200000
+    },
+    "hra": {
+      "metroPercent": 50,
+      "nonMetroPercent": 40,
+      "rentMinusBasicPercent": 10
+    }
+  },
+  "gst": {
+    "supportedRates": [0, 5, 18, 40],
+    "defaultRate": 18
+  },
+  "gstRules": {
+    "supportedRates": [0, 5, 18, 40],
+    "defaultRate": 18,
+    "interState": "IGST",
+    "intraState": "CGST_SGST"
+  },
+  "surcharge": null
+}

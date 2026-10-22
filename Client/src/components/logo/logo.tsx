@@ -1,16 +1,147 @@
-import { PROTECTED_ROUTES } from "@/routes/common/routePath"
-import { GalleryVerticalEnd } from "lucide-react"
-import { Link } from "react-router-dom"
+import React, { useId } from "react";
+import { Link } from "react-router-dom";
 
-const Logo = (props: { url?: string }) => {
-  return (
-    <Link to={props.url || PROTECTED_ROUTES.OVERVIEW} className="flex items-center gap-2">
-    <div className="bg-green-500 text-white h-6.5 w-6.5 rounded flex items-center justify-center">
-    <GalleryVerticalEnd className="size-4" />
-    </div>
-    <span className="font-semibold text-lg">Taxginie</span>
-  </Link>
-  )
+export interface LogoProps {
+  url?: string;
+  className?: string;
+  showText?: boolean;
+  size?: "sm" | "md" | "lg";
+  theme?: "dark" | "light" | "auto";
+  asLink?: boolean;
 }
 
-export default Logo
+export const Logo: React.FC<LogoProps> = ({
+  url = "/",
+  className = "",
+  showText = true,
+  size = "md",
+  theme = "auto",
+  asLink = true,
+}) => {
+  const uniqueId = useId().replace(/:/g, "");
+  const orbGradientId = `orbGrad-${uniqueId}`;
+  const orbGlowId = `orbGlow-${uniqueId}`;
+  const bottomShadowId = `bottomShadow-${uniqueId}`;
+
+  const iconSizes = {
+    sm: "w-7 h-7",
+    md: "w-9 h-9",
+    lg: "w-11 h-11",
+  };
+
+  const textSizes = {
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-xl",
+  };
+
+  const getTextColor = () => {
+    if (theme === "dark") return "text-white";
+    if (theme === "light") return "text-slate-900";
+    return "text-slate-900 dark:text-white";
+  };
+
+  const getSubtitleColor = () => {
+    if (theme === "dark") return "text-slate-400";
+    if (theme === "light") return "text-slate-500";
+    return "text-slate-500 dark:text-slate-400";
+  };
+
+  const getBadgeStyle = () => {
+    if (theme === "dark") {
+      return "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
+    }
+    if (theme === "light") {
+      return "bg-indigo-50 text-indigo-700 border-indigo-200";
+    }
+    return "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30";
+  };
+
+  const content = (
+    <>
+      {/* 3D Luminous Sphere / Orb with Electric Cyan & Indigo Gradients */}
+      <div
+        className={`${iconSizes[size]} rounded-full relative p-0.5 shrink-0 group-hover:scale-105 transition-transform duration-200 shadow-md shadow-indigo-500/20`}
+      >
+        <svg
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full drop-shadow-xs"
+        >
+          <defs>
+            {/* Outer Orb Gradient: Electric Cyan to Indigo to Deep Violet */}
+            <linearGradient id={orbGradientId} x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#38BDF8" />
+              <stop offset="45%" stopColor="#6366F1" />
+              <stop offset="100%" stopColor="#312E81" />
+            </linearGradient>
+
+            {/* Inner Crescent Glow for 3D depth */}
+            <radialGradient id={orbGlowId} cx="14" cy="14" r="18" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+            </radialGradient>
+
+            {/* Bottom shadow curve */}
+            <linearGradient id={bottomShadowId} x1="20" y1="20" x2="20" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#0F172A" stopOpacity="0" />
+              <stop offset="100%" stopColor="#0B1120" stopOpacity="0.6" />
+            </linearGradient>
+          </defs>
+
+          {/* Base Orb */}
+          <circle cx="20" cy="20" r="18" fill={`url(#${orbGradientId})`} />
+
+          {/* Bottom shadow overlay for sphere depth */}
+          <circle cx="20" cy="20" r="18" fill={`url(#${bottomShadowId})`} />
+
+          {/* Top-left specular crescent highlight */}
+          <circle cx="16" cy="16" r="14" fill={`url(#${orbGlowId})`} opacity="0.65" />
+
+          {/* Central Genie Sparkle / 4-point Star */}
+          <path
+            d="M20 10 C20 15 15 20 10 20 C15 20 20 25 20 30 C20 25 25 20 30 20 C25 20 20 15 20 10 Z"
+            fill="#FFFFFF"
+            opacity="0.9"
+          />
+          <circle cx="20" cy="20" r="2" fill="#38BDF8" />
+        </svg>
+      </div>
+
+      {/* Brand Typography */}
+      {showText && (
+        <div className="flex flex-col">
+          <div className="flex items-center gap-1.5">
+            <span
+              className={`${textSizes[size]} font-extrabold tracking-tight ${getTextColor()}`}
+            >
+              TaxGenie
+            </span>
+            <span className={`text-[10px] font-bold px-1.5 py-0.2 rounded-md border uppercase tracking-wide ${getBadgeStyle()}`}>
+              IN
+            </span>
+          </div>
+          <span className={`text-[10px] font-medium tracking-tight ${getSubtitleColor()}`}>
+            FY 2026-27 Edition
+          </span>
+        </div>
+      )}
+    </>
+  );
+
+  const containerClasses = `flex items-center gap-2.5 group select-none ${className}`;
+
+  if (asLink && url) {
+    return (
+      <Link to={url} className={containerClasses}>
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={containerClasses}>{content}</div>;
+};
+
+export default Logo;

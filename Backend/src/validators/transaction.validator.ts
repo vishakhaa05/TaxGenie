@@ -15,7 +15,7 @@ export const baseTransactionSchema = z.object({
       message: "Transaction type must either INCOME or EXPENSE",
     }),
   }),
-  amount: z.number().positive("Amount must be postive").min(1),
+  amount: z.number().positive("Amount must be positive").min(0.001),
   category: z.string().min(1, "Category is required"),
   date: z
     .union([z.string().datetime({ message: "Invalid date string" }), z.date()])
@@ -54,7 +54,6 @@ export const bulkTransactionSchema = z.object({
   transactions: z
     .array(baseTransactionSchema)
     .min(1, "At least one transaction is required")
-    .max(300, "Must not be more than 300 transactions")
     .refine(
       (txs) =>
         txs.every((tx) => {
@@ -62,7 +61,7 @@ export const bulkTransactionSchema = z.object({
           return !isNaN(amount) && amount > 0 && amount <= 1_000_000_000;
         }),
       {
-        message: "Amount must be a postive number",
+        message: "Amount must be a positive number",
       }
     ),
 });

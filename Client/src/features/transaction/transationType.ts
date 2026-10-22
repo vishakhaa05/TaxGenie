@@ -19,12 +19,18 @@ export interface CreateTransactionBody {
   isRecurring: boolean;
   recurringInterval?: RecurringIntervalType | null;
   paymentMethod: string;
+  mode?: "PERSONAL" | "BUSINESS";
+  isTaxDeductible?: boolean;
+  deductionSection?: "80C" | "80D" | "HRA" | "HOME_LOAN" | "OTHER" | null;
+  gstRate?: number;
+  clientOrVendor?: string;
 }
 
 export interface GetAllTransactionParams {
   keyword?: string;
   type?: _TransactionType;
   recurringStatus?: "RECURRING" | "NON_RECURRING";
+  mode?: "PERSONAL" | "BUSINESS";
   pageNumber?: number;
   pageSize?: number;
 }
@@ -44,6 +50,12 @@ export interface TransactionType {
   lastProcessed: string | null;
   status: string;
   paymentMethod: string;
+  mode?: "PERSONAL" | "BUSINESS";
+  isTaxDeductible?: boolean;
+  deductionSection?: "80C" | "80D" | "HRA" | "HOME_LOAN" | "OTHER" | null;
+  gstRate?: number;
+  gstAmount?: number;
+  clientOrVendor?: string;
   createdAt: string;
   updatedAt: string;
   id?: string;
@@ -52,6 +64,7 @@ export interface TransactionType {
 export interface GetAllTransactionResponse {
   message: string;
   transations: TransactionType[];
+  transactions?: TransactionType[];
   pagination: {
     pageSize: number;
     pageNumber: number;

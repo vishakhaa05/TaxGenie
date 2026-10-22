@@ -1,11 +1,24 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { compareValue, hashValue } from "../utils/bcrypt";
 
+export enum AccountModeEnum {
+  PERSONAL = "PERSONAL",
+  BUSINESS = "BUSINESS",
+}
+
+export enum RiskAppetiteEnum {
+  CONSERVATIVE = "CONSERVATIVE",
+  MODERATE = "MODERATE",
+  AGGRESSIVE = "AGGRESSIVE",
+}
+
 export interface UserDocument extends Document {
   name: string;
   email: string;
   password: string;
   profilePicture: string | null;
+  mode: keyof typeof AccountModeEnum;
+  riskAppetite: keyof typeof RiskAppetiteEnum;
   createdAt: Date;
   updatedAt: Date;
   comparePassword: (password: string) => Promise<boolean>;
@@ -29,6 +42,16 @@ const userSchema = new Schema<UserDocument>(
     profilePicture: {
       type: String,
       default: null,
+    },
+    mode: {
+      type: String,
+      enum: Object.values(AccountModeEnum),
+      default: AccountModeEnum.PERSONAL,
+    },
+    riskAppetite: {
+      type: String,
+      enum: Object.values(RiskAppetiteEnum),
+      default: RiskAppetiteEnum.MODERATE,
     },
     password: {
       type: String,
