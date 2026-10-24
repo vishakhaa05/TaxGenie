@@ -153,7 +153,7 @@ export const ToolbarRow: React.FC<ToolbarRowProps> = ({
         </Link>
 
         <Link
-          to="/tax-calculator"
+          to="/income-tax"
           className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-500/25 transition-all hover:shadow-md active:scale-95 cursor-pointer shrink-0"
         >
           <Plus className="w-4 h-4 stroke-[2.5]" />

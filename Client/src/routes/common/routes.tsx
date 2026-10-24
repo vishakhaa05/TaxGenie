@@ -19,6 +19,10 @@ const Account = lazy(() => import("@/pages/settings/account"));
 const Appearance = lazy(() => import("@/pages/settings/appearance"));
 const Billing = lazy(() => import("@/pages/settings/billing"));
 
+const IncomeTaxPage = lazy(() => import("@/pages/income-tax/IncomeTaxPage"));
+const ResultPage = lazy(() => import("@/pages/income-tax/ResultPage"));
+const HistoryPage = lazy(() => import("@/pages/income-tax/HistoryPage"));
+
 const withSuspense = (component: React.ReactNode) => (
   <Suspense fallback={<RouteLoader />}>{component}</Suspense>
 );
@@ -32,8 +36,12 @@ export const authenticationRoutePaths = [
 export const publicAppRoutePaths = [
   { path: APP_ROUTES.DASHBOARD, element: withSuspense(<Dashboard />) },
   { path: APP_ROUTES.OVERVIEW, element: withSuspense(<Dashboard />) },
-  { path: APP_ROUTES.TAX_CALCULATOR, element: withSuspense(<TaxOptimizer />) },
-  { path: APP_ROUTES.TAX_OPTIMIZER, element: withSuspense(<TaxOptimizer />) },
+  { path: APP_ROUTES.INCOME_TAX, element: withSuspense(<IncomeTaxPage />) },
+  { path: APP_ROUTES.INCOME_TAX_RESULT, element: withSuspense(<ResultPage />) },
+  { path: APP_ROUTES.INCOME_TAX_HISTORY, element: withSuspense(<HistoryPage />) },
+  { path: APP_ROUTES.TAX_CALCULATOR, element: withSuspense(<IncomeTaxPage />) },
+  { path: APP_ROUTES.TAX_OPTIMIZER, element: withSuspense(<ResultPage />) },
+  { path: APP_ROUTES.TAX_HISTORY, element: withSuspense(<HistoryPage />) },
   { path: APP_ROUTES.TAX_SUMMARY, element: withSuspense(<Dashboard />) },
   { path: APP_ROUTES.GST_SUMMARY, element: withSuspense(<Dashboard />) },
   { path: APP_ROUTES.GST_CALCULATOR, element: withSuspense(<InvoiceGenerator />) },

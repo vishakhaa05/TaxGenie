@@ -11,6 +11,9 @@ export const AUTH_ROUTES = {
 export const APP_ROUTES = {
   DASHBOARD: "/",
   OVERVIEW: "/overview",
+  INCOME_TAX: "/income-tax",
+  INCOME_TAX_RESULT: "/income-tax/result",
+  INCOME_TAX_HISTORY: "/income-tax/history",
   TAX_CALCULATOR: "/tax-calculator",
   TAX_OPTIMIZER: "/tax-optimizer",
   TAX_SUMMARY: "/tax-summary",

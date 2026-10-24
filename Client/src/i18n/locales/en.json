@@ -166,5 +166,223 @@
       "total": "Total Amount",
       "roundOff": "Round-off Adjustment"
     }
+  },
+  "incomeTax": {
+    "calculatorTitle": "Income Tax Calculator & Comparison",
+    "calculatorTagline": "Find out how much you pay under the New vs Old tax regimes for FY 2026-27 in under 2 minutes.",
+    "startOver": "Start over",
+    "inWords": "In words",
+    "calculating": "Calculating...",
+    "calculateAndCompare": "Calculate & Compare Regimes",
+    "steps": {
+      "age": "Age & Year",
+      "ageDesc": "Taxpayer profile",
+      "income": "Income",
+      "incomeDesc": "Salary & other",
+      "deductions": "Deductions",
+      "deductionsDesc": "Old regime saves",
+      "result": "Result",
+      "resultDesc": "New vs Old"
+    },
+    "step1": {
+      "title": "Step 1: About You",
+      "subtitle": "Older taxpayers get a higher tax-free limit in the old regime."
+    },
+    "age": {
+      "taxYearLabel": "Tax Year",
+      "selectAgeGroup": "Select Your Age Group",
+      "below60": {
+        "title": "Below 60",
+        "desc": "Individual taxpayers under 60 years of age"
+      },
+      "senior": {
+        "title": "60 to 79 (Senior citizen)",
+        "desc": "Higher exemption limit up to ₹3,00,000 in Old Regime",
+        "badge": "Higher Exemption"
+      },
+      "superSenior": {
+        "title": "80 or above (Super senior citizen)",
+        "desc": "Higher exemption limit up to ₹5,00,000 in Old Regime",
+        "badge": "Max Exemption"
+      }
+    },
+    "years": {
+      "fy2026_27": "FY 2026-27 (Budget 2025)"
+    },
+    "step2": {
+      "title": "Step 2: Your Income",
+      "subtitle": "Enter your salary and other income sources for the full financial year."
+    },
+    "salary": {
+      "title": "Salary Income (CTC or Gross Salary)",
+      "desc": "Income before deductions like PF, tax, and standard deduction",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "monthlyPlaceholder": "e.g. 1,00,000",
+      "yearlyPlaceholder": "e.g. 15,00,000",
+      "yearlyEquivalent": "That is {{amount}} a year"
+    },
+    "otherIncome": {
+      "title": "Other Income (Bank Interest, FD Interest, etc.)",
+      "helper": "Standard deduction does not apply to this.",
+      "label": "Annual Other Income",
+      "tooltip": "Includes interest from savings accounts, fixed deposits, recurring deposits, or other taxable earnings.",
+      "example": "Example: ₹25,000 from savings bank and FD interest"
+    },
+    "step3": {
+      "title": "Step 3: Deductions & Allowances",
+      "subtitle": "Investments and expenses that reduce your taxable income under the Old Tax Regime."
+    },
+    "deductions": {
+      "bannerTitle": "Important Note",
+      "bannerMsg": "Deductions only help in the OLD regime. We will calculate both and compare for you.",
+      "skipBtn": "Skip - I have no deductions",
+      "meterText": "{{current}} of {{limit}} used",
+      "limitExceededNotice": "Only {{limit}} counts. We will use the limit.",
+      "sec80C": {
+        "label": "Section 80C Investments",
+        "tooltip": "Covers Employee PF (EPF), PPF, ELSS mutual funds, Life Insurance Premiums, National Savings Certificate (NSC), SSY, and Children Tuition Fees.",
+        "example": "e.g. ₹1,50,000 for EPF contribution + PPF investment"
+      },
+      "sec80D_self": {
+        "label": "Section 80D - Health Insurance (Self & Family)",
+        "tooltip": "Medical insurance premiums and preventive health check-up (up to ₹5,000) for yourself, spouse, and dependent children.",
+        "example": "e.g. ₹25,000 yearly premium for family health cover"
+      },
+      "parentsSeniorToggle": "My parents are senior citizens (age 60+)",
+      "sec80D_parents": {
+        "label": "Section 80D - Health Insurance (Parents)",
+        "tooltip": "Medical insurance premiums for parents. Limit is ₹25,000 (normal) or ₹50,000 if either parent is 60 years or older.",
+        "example": "e.g. ₹50,000 for senior citizen parents' insurance"
+      },
+      "sec80CCD1B": {
+        "label": "NPS Contribution - Section 80CCD(1B)",
+        "tooltip": "Exclusive additional deduction for voluntary contribution to Tier 1 National Pension Scheme (NPS), above the Section 80C ₹1.5L limit.",
+        "example": "e.g. ₹50,000 deposited in NPS Tier-1 account"
+      },
+      "homeLoan": {
+        "label": "Home Loan Interest - Section 24(b) (Self-occupied House)",
+        "tooltip": "Interest paid on home loan borrowed for purchase or construction of a self-occupied residential property. Capped at ₹2,00,000.",
+        "example": "e.g. ₹2,00,000 interest portion shown on bank home loan certificate"
+      },
+      "hra": {
+        "title": "House Rent Allowance (HRA)",
+        "subtitle": "Claim tax exemption on rent paid under Section 10(13A)",
+        "basicLabel": "Basic Salary (Yearly)",
+        "basicTooltip": "Basic salary component of your CTC for the full year.",
+        "receivedLabel": "HRA Received (Yearly)",
+        "receivedTooltip": "Total HRA received from your employer in Form 16 / salary slips.",
+        "rentLabel": "Rent Paid (Yearly)",
+        "rentTooltip": "Actual total rent paid to landlord during the financial year.",
+        "metroLabel": "Metro city?",
+        "calculatedExemption": "Calculated HRA Exemption"
+      }
+    },
+    "summary": {
+      "title": "Your Summary So Far",
+      "salaryIncome": "Gross Salary (Annual)",
+      "otherIncome": "Other Income",
+      "grossTotal": "Gross Total Income",
+      "deductionsOld": "Total Old Regime Deductions"
+    },
+    "result": {
+      "saveWithNew": "You save {{savings}} with the New Regime",
+      "saveWithOld": "You save {{savings}} with the Old Regime",
+      "bothSame": "Both regimes result in the exact same tax liability",
+      "noTaxTitle": "Zero Tax to Pay Under Either Regime! 🎉",
+      "noTaxSubtitle": "Your taxable income is fully covered by statutory deductions and Section 87A rebate.",
+      "newExpl": "The New Regime offers wider slabs, higher standard deduction (₹75k), and full tax rebate up to ₹12 Lakhs.",
+      "oldExpl": "Your eligible itemized deductions (80C, 80D, HRA, Home Loan) outweigh the lower rates of the New Regime.",
+      "sameExpl": "You can choose either regime based on your future deduction plans.",
+      "annualSavings": "Annual Tax Savings",
+      "newRegimeTitle": "New Tax Regime (Section 115BAC)",
+      "oldRegimeTitle": "Old Tax Regime",
+      "recommendedBadge": "Recommended ✓",
+      "alternativeBadge": "Alternative Option",
+      "newSub": "Standard deduction ₹75,000 + 87A rebate",
+      "oldSub": "Itemized deductions 80C, 80D, HRA & 87A rebate",
+      "totalTaxLabel": "Total Tax Payable",
+      "effectiveRate": "Effective rate",
+      "monthlyRate": "Monthly",
+      "grossIncome": "Gross Total Income",
+      "stdDeduction": "Standard Deduction",
+      "chapterVIA": "Chapter VI-A Deductions",
+      "taxableIncome": "Net Taxable Income",
+      "taxBeforeRebate": "Tax Computed (Slabs)",
+      "rebate87A": "Rebate u/s 87A",
+      "marginalRelief": "Marginal Relief Adjustment",
+      "cess": "Health & Education Cess (4%)",
+      "howWeCalculated": "How We Calculated This",
+      "newAccordionTitle": "New Regime Calculation Breakdown",
+      "oldAccordionTitle": "Old Regime Calculation Breakdown",
+      "slabBreakdownTitle": "Tax Slab Calculation",
+      "calculationStepsTitle": "Calculation Sequence",
+      "noResultTitle": "No Calculation Found Yet",
+      "noResultDesc": "Enter your income details in the 2-minute tax calculator to compare New vs Old tax regimes.",
+      "startCalculationBtn": "Start Free Calculation",
+      "newRegimeShort": "New Regime",
+      "oldRegimeShort": "Old Regime"
+    },
+    "breakEven": {
+      "title": "Want to make the Old Regime better?",
+      "message": "You would need about {{amount}} in total deductions for the Old Regime to be better."
+    },
+    "warningTitle": {
+      "deductionCapped": "Deduction Limit Reached",
+      "surchargeNotice": "High Income Surcharge Notice",
+      "rebateApplied": "Section 87A Full Rebate",
+      "marginalRelief": "Marginal Relief Protection",
+      "otherIncome": "Standard Deduction Rule",
+      "note": "Calculation Note"
+    },
+    "actions": {
+      "editAnswers": "Edit answers",
+      "startOver": "Start over",
+      "save": "Save calculation",
+      "askAi": "Ask AI about this result",
+      "downloadPdf": "Download PDF"
+    },
+    "modals": {
+      "saveTitle": "Save Your Tax Calculation",
+      "saveSubtitle": "Sign in to TaxGenie to save this comparison to your dashboard, track changes across years, and export reports anytime.",
+      "aiTitle": "TaxGenie AI Advisor",
+      "aiSubtitle": "Personalized AI tax advice and deduction optimization will arrive in Phase 7! You can also explore the AI Advisor tab in the sidebar.",
+      "openAdvisor": "Open AI Advisor"
+    },
+    "history": {
+      "loginTitle": "Login to See Saved Calculations",
+      "noSavedTitle": "No Saved Calculations Yet",
+      "guestDesc": "Sign in to your TaxGenie account to view your calculation history, compare previous financial years, and access audit reports.",
+      "userDesc": "You haven't saved any tax calculations yet. Run a calculation and click 'Save' to track it here.",
+      "newCalculation": "Calculate Now"
+    },
+    "rulesError": {
+      "title": "Unable to Load Tax Rules"
+    },
+    "chart": {
+      "title": "Tax Liability Comparison Chart",
+      "subtitle": "Visual comparison of New Regime vs Old Regime tax liability",
+      "totalTax": "Total Tax",
+      "taxPlusCess": "Base Tax + Cess",
+      "totalTaxLabel": "Total Tax Payable",
+      "baseTaxLabel": "Tax before Cess",
+      "cessLabel": "Cess (4%)"
+    },
+    "slab": {
+      "range": "Income Slab",
+      "amountInSlab": "Taxable in Slab",
+      "rate": "Rate",
+      "tax": "Tax"
+    },
+    "validation": {
+      "ageRequired": "Please select your age group",
+      "yearRequired": "Please select a tax year",
+      "salaryRequired": "Salary income is required",
+      "validNumberRequired": "Please enter a valid amount",
+      "wholeNumberOnly": "Must be a whole rupee amount",
+      "nonNegative": "Amount cannot be negative",
+      "amountTooHigh": "Amount exceeds maximum limit",
+      "basicSalaryRequiredForHra": "Basic salary is required to calculate HRA exemption"
+    }
   }
 }

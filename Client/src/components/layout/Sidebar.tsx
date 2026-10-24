@@ -69,12 +69,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     {
       key: "incomeTax",
       label: t("nav.incomeTax"),
-      href: "/tax-calculator",
+      href: "/income-tax",
       icon: Calculator,
       subItems: [
-        { label: t("nav.calculator"), href: "/tax-calculator" },
-        { label: t("nav.compareRegimes"), href: "/tax-optimizer" },
-        { label: t("nav.history"), href: "/tax-history" },
+        { label: t("nav.calculator"), href: "/income-tax" },
+        { label: t("nav.compareRegimes"), href: "/income-tax/result" },
+        { label: t("nav.history"), href: "/income-tax/history" },
       ],
     },
     {
