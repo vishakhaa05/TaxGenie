@@ -184,7 +184,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
                   className="flex items-center gap-2 p-1 pl-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   aria-label="User menu"
                 >
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-600 to-sky-400 text-white font-bold text-xs flex items-center justify-center ring-2 ring-indigo-500/20">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#0B3B2C] to-[#10B981] text-white font-bold text-xs flex items-center justify-center ring-2 ring-[#10B981]/20">
                     {user?.name ? user.name.charAt(0).toUpperCase() : "U"}
                   </div>
                   <span className="hidden md:inline text-xs font-semibold text-slate-700 dark:text-slate-200">
