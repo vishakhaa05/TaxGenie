@@ -9,6 +9,7 @@ const ForgotPasswordPage = lazy(() => import("@/pages/auth/ForgotPasswordPage"))
 const ResetPasswordPage = lazy(() => import("@/pages/auth/ResetPasswordPage"));
 
 const Dashboard = lazy(() => import("@/pages/dashboard"));
+const LandingPage = lazy(() => import("@/pages/landing/LandingPage"));
 const Transactions = lazy(() => import("@/pages/transactions"));
 const TaxOptimizer = lazy(() => import("@/pages/tax-optimizer"));
 const AiAdvisor = lazy(() => import("@/pages/ai-advisor"));
@@ -47,6 +48,7 @@ export const authenticationRoutePaths = [
 
 // Publicly accessible inside AppShell (calculators, invoices builder and dashboard work without login)
 export const publicAppRoutePaths = [
+  { path: "/landing", element: withSuspense(<LandingPage />) },
   { path: APP_ROUTES.DASHBOARD, element: withSuspense(<Dashboard />) },
   { path: APP_ROUTES.OVERVIEW, element: withSuspense(<Dashboard />) },
   { path: APP_ROUTES.INCOME_TAX, element: withSuspense(<IncomeTaxPage />) },
