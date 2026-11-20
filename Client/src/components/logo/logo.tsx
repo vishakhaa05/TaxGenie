@@ -37,8 +37,8 @@ export const Logo: React.FC<LogoProps> = ({
 
   const getTextColor = () => {
     if (theme === "dark") return "text-white";
-    if (theme === "light") return "text-slate-900";
-    return "text-slate-900 dark:text-white";
+    if (theme === "light") return "text-[#0B3B2C]";
+    return "text-[#0B3B2C] dark:text-white";
   };
 
   const getSubtitleColor = () => {
@@ -49,19 +49,19 @@ export const Logo: React.FC<LogoProps> = ({
 
   const getBadgeStyle = () => {
     if (theme === "dark") {
-      return "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
+      return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
     }
     if (theme === "light") {
-      return "bg-indigo-50 text-indigo-700 border-indigo-200";
+      return "bg-[#E6F5EE] text-[#064E3B] border-[#A7F3D0]";
     }
-    return "bg-indigo-50 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-500/30";
+    return "bg-[#E6F5EE] dark:bg-emerald-500/20 text-[#064E3B] dark:text-emerald-300 border-[#A7F3D0] dark:border-emerald-500/30";
   };
 
   const content = (
     <>
-      {/* 3D Luminous Sphere / Orb with Electric Cyan & Indigo Gradients */}
+      {/* 3D Luminous Sphere / Orb with Forest Green & Emerald Gradients matching Mockup */}
       <div
-        className={`${iconSizes[size]} rounded-full relative p-0.5 shrink-0 group-hover:scale-105 transition-transform duration-200 shadow-md shadow-indigo-500/20`}
+        className={`${iconSizes[size]} rounded-full relative p-0.5 shrink-0 group-hover:scale-105 transition-transform duration-200 shadow-md shadow-emerald-500/20`}
       >
         <svg
           viewBox="0 0 40 40"
@@ -70,24 +70,24 @@ export const Logo: React.FC<LogoProps> = ({
           className="w-full h-full drop-shadow-xs"
         >
           <defs>
-            {/* Outer Orb Gradient: Electric Cyan to Indigo to Deep Violet */}
+            {/* Outer Orb Gradient: Emerald to Forest Green */}
             <linearGradient id={orbGradientId} x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#38BDF8" />
-              <stop offset="45%" stopColor="#6366F1" />
-              <stop offset="100%" stopColor="#312E81" />
+              <stop offset="0%" stopColor="#34D399" />
+              <stop offset="45%" stopColor="#10B981" />
+              <stop offset="100%" stopColor="#0B3B2C" />
             </linearGradient>
 
             {/* Inner Crescent Glow for 3D depth */}
             <radialGradient id={orbGlowId} cx="14" cy="14" r="18" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#38BDF8" stopOpacity="0.2" />
-              <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#A7F3D0" stopOpacity="0.3" />
+              <stop offset="100%" stopColor="#0B3B2C" stopOpacity="0" />
             </radialGradient>
 
             {/* Bottom shadow curve */}
             <linearGradient id={bottomShadowId} x1="20" y1="20" x2="20" y2="38" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#0F172A" stopOpacity="0" />
-              <stop offset="100%" stopColor="#0B1120" stopOpacity="0.6" />
+              <stop offset="0%" stopColor="#0B3B2C" stopOpacity="0" />
+              <stop offset="100%" stopColor="#051E16" stopOpacity="0.7" />
             </linearGradient>
           </defs>
 
@@ -104,9 +104,9 @@ export const Logo: React.FC<LogoProps> = ({
           <path
             d="M20 10 C20 15 15 20 10 20 C15 20 20 25 20 30 C20 25 25 20 30 20 C25 20 20 15 20 10 Z"
             fill="#FFFFFF"
-            opacity="0.9"
+            opacity="0.95"
           />
-          <circle cx="20" cy="20" r="2" fill="#38BDF8" />
+          <circle cx="20" cy="20" r="2" fill="#10B981" />
         </svg>
       </div>
 
@@ -115,7 +115,7 @@ export const Logo: React.FC<LogoProps> = ({
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <span
-              className={`${textSizes[size]} font-extrabold tracking-tight ${getTextColor()}`}
+              className={`${textSizes[size]} font-black tracking-tight ${getTextColor()}`}
             >
               TaxGenie
             </span>
