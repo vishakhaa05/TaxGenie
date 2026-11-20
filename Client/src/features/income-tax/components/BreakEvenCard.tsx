@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { formatINR } from "../utils/formatINR";
-import { Lightbulb, ArrowRight } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 
 interface BreakEvenCardProps {
   breakEven: number | null;
@@ -27,21 +27,18 @@ export const BreakEvenCard: React.FC<BreakEvenCardProps> = ({
     <div
       role="region"
       aria-label="Break-even tax hint"
-      className={`p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-yellow-500/10 border border-amber-500/30 text-amber-950 dark:text-amber-100 shadow-xs flex items-start gap-4 ${className}`}
+      className={`p-5 rounded-2xl bg-[#FEF3C7] dark:bg-[#2B2312] border border-[#FDE68A] dark:border-[#523F16] text-[#78350F] dark:text-[#FDE68A] shadow-xs flex items-start gap-3.5 ${className}`}
     >
-      <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
-        <Lightbulb className="w-5 h-5" />
+      <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+        <Lightbulb className="w-4 h-4" />
       </div>
 
       <div className="space-y-1">
-        <h4 className="text-sm sm:text-base font-bold text-amber-900 dark:text-amber-200">
-          {t("incomeTax.breakEven.title", "Want to make the Old Regime better?")}
+        <h4 className="text-xs font-black uppercase tracking-wider text-amber-900 dark:text-amber-200">
+          Break-even hint
         </h4>
-        <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          {t("incomeTax.breakEven.message", {
-            amount: formattedBreakEven,
-            defaultValue: `You would need about ${formattedBreakEven} in total deductions for the Old Regime to be better.`,
-          })}
+        <p className="text-xs leading-relaxed text-amber-950/90 dark:text-amber-100/90 font-medium">
+          You need to claim deductions worth at least <strong>{formattedBreakEven}</strong> (such as 80C, 80D, and HRA) for the Old regime to save you more tax.
         </p>
       </div>
     </div>
