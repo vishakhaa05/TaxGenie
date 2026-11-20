@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "6addcf8dded6a875615afb1f",
+    "id": "6addcf8dded6a875615afb1f",
+    "legalName": "Sharma Enterprises",
+    "tradeName": "Sharma Tech Solutions",
+    "gstin": "27ABCDE1234F1Z0",
+    "pan": "ABCDE1234F",
+    "address": "101 Nariman Point, Marine Drive",
+    "state": "Maharashtra",
+    "pincode": "400021",
+    "phone": "+91 9876543210",
+    "email": "billing@sharma.in",
+    "invoicePrefix": "INV",
+    "numberPadding": 4,
+    "resetEachFinancialYear": true,
+    "defaultPaymentTermsDays": 15,
+    "defaultNotes": "Thank you for your business.",
+    "defaultTerms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "signatureLabel": "Authorised Signatory",
+    "userId": "6addcf88ded6a875615afb17",
+    "createdAt": "2026-10-25T09:44:45.477Z",
+    "updatedAt": "2026-10-25T09:44:45.477Z"
+  },
+  {
+    "_id": "6addcf8fded6a875615afb37",
+    "id": "6addcf8fded6a875615afb37",
+    "legalName": "Unregistered Freelancer",
+    "address": "24 Park St",
+    "state": "Delhi",
+    "pincode": "110001",
+    "invoicePrefix": "INV",
+    "numberPadding": 4,
+    "resetEachFinancialYear": true,
+    "defaultPaymentTermsDays": 15,
+    "signatureLabel": "Authorised Signatory",
+    "userId": "6addcf8bded6a875615afb1b",
+    "createdAt": "2026-10-25T09:44:47.769Z",
+    "updatedAt": "2026-10-25T09:44:47.769Z"
+  }
+]

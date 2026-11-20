@@ -119,11 +119,19 @@ export const GreetingBanner = () => {
           </Link>
 
           <Link
-            to="/gst-calculator"
+            to="/gst"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs border border-slate-200 dark:border-slate-700 shadow-xs transition-colors"
           >
             <Receipt className="w-3.5 h-3.5 text-indigo-500" />
             <span>GST Calculator</span>
+          </Link>
+
+          <Link
+            to="/invoices"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-xs border border-slate-200 dark:border-slate-700 shadow-xs transition-colors hidden md:inline-flex"
+          >
+            <Receipt className="w-3.5 h-3.5 text-sky-500" />
+            <span>Create Invoice</span>
           </Link>
         </div>
       </div>

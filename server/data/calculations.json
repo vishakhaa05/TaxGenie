@@ -1,0 +1,576 @@
+[
+  {
+    "_id": "6addcf91ab72819ac2c46c00",
+    "id": "6addcf91ab72819ac2c46c00",
+    "userId": "6addcf90ab72819ac2c46bfc",
+    "type": "gst",
+    "taxYear": "2026-27",
+    "name": "GST 18% - ₹1,00,000",
+    "inputs": {
+      "amount": 100000,
+      "rate": 18,
+      "mode": "exclusive",
+      "sameState": true,
+      "sellerState": "27-Maharashtra",
+      "buyerState": "27-Maharashtra"
+    },
+    "result": {
+      "base": 100000,
+      "gstAmount": 18000,
+      "cgst": 9000,
+      "sgst": 9000,
+      "igst": 0,
+      "total": 118000,
+      "supplyType": "intra",
+      "rate": 18,
+      "basePaise": 10000000,
+      "gstPaise": 1800000,
+      "cgstPaise": 900000,
+      "sgstPaise": 900000,
+      "igstPaise": 0,
+      "totalPaise": 11800000
+    },
+    "rulesVersion": "2026-27-v1",
+    "summary": {
+      "amount": 100000,
+      "rate": 18,
+      "mode": "add",
+      "gstAmount": 18000,
+      "total": 118000
+    },
+    "createdAt": "2026-10-25T09:44:49.005Z",
+    "updatedAt": "2026-10-25T09:44:49.005Z"
+  },
+  {
+    "_id": "6addcf90ab72819ac2c46bff",
+    "id": "6addcf90ab72819ac2c46bff",
+    "userId": "6addcf90ab72819ac2c46bfc",
+    "type": "income_tax",
+    "taxYear": "2026-27",
+    "name": "Income Tax FY 2026-27 - ₹18,50,000",
+    "inputs": {
+      "taxYear": "2026-27",
+      "ageGroup": "below60",
+      "salaryIncome": 1800000,
+      "otherIncome": 50000,
+      "deductions": {
+        "sec80C": 150000
+      }
+    },
+    "result": {
+      "newRegime": {
+        "regime": "new",
+        "grossIncome": 1850000,
+        "standardDeductionApplied": 75000,
+        "deductionsApplied": {},
+        "taxableIncome": 1775000,
+        "slabBreakdown": [
+          {
+            "from": 0,
+            "upTo": 400000,
+            "rate": 0,
+            "taxableAmount": 400000,
+            "tax": 0
+          },
+          {
+            "from": 400000,
+            "upTo": 800000,
+            "rate": 5,
+            "taxableAmount": 400000,
+            "tax": 20000
+          },
+          {
+            "from": 800000,
+            "upTo": 1200000,
+            "rate": 10,
+            "taxableAmount": 400000,
+            "tax": 40000
+          },
+          {
+            "from": 1200000,
+            "upTo": 1600000,
+            "rate": 15,
+            "taxableAmount": 400000,
+            "tax": 60000
+          },
+          {
+            "from": 1600000,
+            "upTo": 2000000,
+            "rate": 20,
+            "taxableAmount": 175000,
+            "tax": 35000
+          },
+          {
+            "from": 2000000,
+            "upTo": 2400000,
+            "rate": 25,
+            "taxableAmount": 0,
+            "tax": 0
+          },
+          {
+            "from": 2400000,
+            "upTo": null,
+            "rate": 30,
+            "taxableAmount": 0,
+            "tax": 0
+          }
+        ],
+        "taxBeforeRebate": 155000,
+        "rebateApplied": 0,
+        "marginalReliefApplied": 0,
+        "taxAfterRebate": 155000,
+        "cess": 6200,
+        "totalTax": 161200,
+        "effectiveRatePercent": 8.71,
+        "monthlyTax": 13433,
+        "steps": [
+          {
+            "stepKey": "tax.step.grossIncome",
+            "value": 1850000,
+            "formattedValue": "18,50,000",
+            "descriptionParams": {
+              "salary": 1800000,
+              "other": 50000
+            }
+          },
+          {
+            "stepKey": "tax.step.standardDeduction",
+            "value": 75000,
+            "formattedValue": "75,000",
+            "descriptionParams": {
+              "limit": 75000
+            }
+          },
+          {
+            "stepKey": "tax.step.taxableIncome",
+            "value": 1775000,
+            "formattedValue": "17,75,000"
+          },
+          {
+            "stepKey": "tax.step.slabTax",
+            "value": 155000,
+            "formattedValue": "1,55,000"
+          },
+          {
+            "stepKey": "tax.step.rebate",
+            "value": 0,
+            "formattedValue": "0"
+          },
+          {
+            "stepKey": "tax.step.taxAfterRebate",
+            "value": 155000,
+            "formattedValue": "1,55,000"
+          },
+          {
+            "stepKey": "tax.step.cess",
+            "value": 6200,
+            "formattedValue": "6,200",
+            "descriptionParams": {
+              "rate": 4
+            }
+          },
+          {
+            "stepKey": "tax.step.totalTax",
+            "value": 161200,
+            "formattedValue": "1,61,200"
+          }
+        ],
+        "warnings": []
+      },
+      "oldRegime": {
+        "regime": "old",
+        "grossIncome": 1850000,
+        "standardDeductionApplied": 50000,
+        "deductionsApplied": {
+          "sec80C": 150000,
+          "sec80CCD1B": 0,
+          "sec80D_selfFamily": 0,
+          "sec80D_parents": 0,
+          "homeLoanInterest": 0,
+          "hraExemption": 0
+        },
+        "taxableIncome": 1650000,
+        "slabBreakdown": [
+          {
+            "from": 0,
+            "upTo": 250000,
+            "rate": 0,
+            "taxableAmount": 250000,
+            "tax": 0
+          },
+          {
+            "from": 250000,
+            "upTo": 500000,
+            "rate": 5,
+            "taxableAmount": 250000,
+            "tax": 12500
+          },
+          {
+            "from": 500000,
+            "upTo": 1000000,
+            "rate": 20,
+            "taxableAmount": 500000,
+            "tax": 100000
+          },
+          {
+            "from": 1000000,
+            "upTo": null,
+            "rate": 30,
+            "taxableAmount": 650000,
+            "tax": 195000
+          }
+        ],
+        "taxBeforeRebate": 307500,
+        "rebateApplied": 0,
+        "marginalReliefApplied": 0,
+        "taxAfterRebate": 307500,
+        "cess": 12300,
+        "totalTax": 319800,
+        "effectiveRatePercent": 17.29,
+        "monthlyTax": 26650,
+        "steps": [
+          {
+            "stepKey": "tax.step.grossIncome",
+            "value": 1850000,
+            "formattedValue": "18,50,000",
+            "descriptionParams": {
+              "salary": 1800000,
+              "other": 50000
+            }
+          },
+          {
+            "stepKey": "tax.step.standardDeduction",
+            "value": 50000,
+            "formattedValue": "50,000",
+            "descriptionParams": {
+              "limit": 50000
+            }
+          },
+          {
+            "stepKey": "tax.step.deductions",
+            "value": 150000,
+            "formattedValue": "1,50,000"
+          },
+          {
+            "stepKey": "tax.step.taxableIncome",
+            "value": 1650000,
+            "formattedValue": "16,50,000"
+          },
+          {
+            "stepKey": "tax.step.slabTax",
+            "value": 307500,
+            "formattedValue": "3,07,500"
+          },
+          {
+            "stepKey": "tax.step.rebate",
+            "value": 0,
+            "formattedValue": "0"
+          },
+          {
+            "stepKey": "tax.step.taxAfterRebate",
+            "value": 307500,
+            "formattedValue": "3,07,500"
+          },
+          {
+            "stepKey": "tax.step.cess",
+            "value": 12300,
+            "formattedValue": "12,300",
+            "descriptionParams": {
+              "rate": 4
+            }
+          },
+          {
+            "stepKey": "tax.step.totalTax",
+            "value": 319800,
+            "formattedValue": "3,19,800"
+          }
+        ],
+        "warnings": []
+      },
+      "recommended": "new",
+      "savings": 158600,
+      "savingsPercent": 49.59,
+      "breakEven": 658332
+    },
+    "rulesVersion": "2026-27",
+    "summary": {
+      "grossIncome": 1850000,
+      "recommendedRegime": "new",
+      "bestTax": 161200,
+      "otherTax": 319800,
+      "savings": 158600
+    },
+    "createdAt": "2026-10-25T09:44:48.918Z",
+    "updatedAt": "2026-10-25T09:44:48.918Z"
+  },
+  {
+    "_id": "6addcf8fab72819ac2c46bfb",
+    "id": "6addcf8fab72819ac2c46bfb",
+    "userId": "6addcf8eab72819ac2c46bf5",
+    "type": "income_tax",
+    "taxYear": "2026-27",
+    "name": "Income Tax FY 2026-27 - ₹12,00,000",
+    "inputs": {
+      "taxYear": "2026-27",
+      "ageGroup": "below60",
+      "salaryIncome": 1200000,
+      "otherIncome": 0,
+      "deductions": {
+        "sec80C": 150000
+      }
+    },
+    "result": {
+      "newRegime": {
+        "regime": "new",
+        "grossIncome": 1200000,
+        "standardDeductionApplied": 75000,
+        "deductionsApplied": {},
+        "taxableIncome": 1125000,
+        "slabBreakdown": [
+          {
+            "from": 0,
+            "upTo": 400000,
+            "rate": 0,
+            "taxableAmount": 400000,
+            "tax": 0
+          },
+          {
+            "from": 400000,
+            "upTo": 800000,
+            "rate": 5,
+            "taxableAmount": 400000,
+            "tax": 20000
+          },
+          {
+            "from": 800000,
+            "upTo": 1200000,
+            "rate": 10,
+            "taxableAmount": 325000,
+            "tax": 32500
+          },
+          {
+            "from": 1200000,
+            "upTo": 1600000,
+            "rate": 15,
+            "taxableAmount": 0,
+            "tax": 0
+          },
+          {
+            "from": 1600000,
+            "upTo": 2000000,
+            "rate": 20,
+            "taxableAmount": 0,
+            "tax": 0
+          },
+          {
+            "from": 2000000,
+            "upTo": 2400000,
+            "rate": 25,
+            "taxableAmount": 0,
+            "tax": 0
+          },
+          {
+            "from": 2400000,
+            "upTo": null,
+            "rate": 30,
+            "taxableAmount": 0,
+            "tax": 0
+          }
+        ],
+        "taxBeforeRebate": 52500,
+        "rebateApplied": 52500,
+        "marginalReliefApplied": 0,
+        "taxAfterRebate": 0,
+        "cess": 0,
+        "totalTax": 0,
+        "effectiveRatePercent": 0,
+        "monthlyTax": 0,
+        "steps": [
+          {
+            "stepKey": "tax.step.grossIncome",
+            "value": 1200000,
+            "formattedValue": "12,00,000",
+            "descriptionParams": {
+              "salary": 1200000,
+              "other": 0
+            }
+          },
+          {
+            "stepKey": "tax.step.standardDeduction",
+            "value": 75000,
+            "formattedValue": "75,000",
+            "descriptionParams": {
+              "limit": 75000
+            }
+          },
+          {
+            "stepKey": "tax.step.taxableIncome",
+            "value": 1125000,
+            "formattedValue": "11,25,000"
+          },
+          {
+            "stepKey": "tax.step.slabTax",
+            "value": 52500,
+            "formattedValue": "52,500"
+          },
+          {
+            "stepKey": "tax.step.rebate",
+            "value": 52500,
+            "formattedValue": "52,500"
+          },
+          {
+            "stepKey": "tax.step.taxAfterRebate",
+            "value": 0,
+            "formattedValue": "0"
+          },
+          {
+            "stepKey": "tax.step.cess",
+            "value": 0,
+            "formattedValue": "0",
+            "descriptionParams": {
+              "rate": 4
+            }
+          },
+          {
+            "stepKey": "tax.step.totalTax",
+            "value": 0,
+            "formattedValue": "0"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "REBATE_APPLIED",
+            "params": {
+              "amount": 52500,
+              "limit": 1200000
+            }
+          }
+        ]
+      },
+      "oldRegime": {
+        "regime": "old",
+        "grossIncome": 1200000,
+        "standardDeductionApplied": 50000,
+        "deductionsApplied": {
+          "sec80C": 150000,
+          "sec80CCD1B": 0,
+          "sec80D_selfFamily": 0,
+          "sec80D_parents": 0,
+          "homeLoanInterest": 0,
+          "hraExemption": 0
+        },
+        "taxableIncome": 1000000,
+        "slabBreakdown": [
+          {
+            "from": 0,
+            "upTo": 250000,
+            "rate": 0,
+            "taxableAmount": 250000,
+            "tax": 0
+          },
+          {
+            "from": 250000,
+            "upTo": 500000,
+            "rate": 5,
+            "taxableAmount": 250000,
+            "tax": 12500
+          },
+          {
+            "from": 500000,
+            "upTo": 1000000,
+            "rate": 20,
+            "taxableAmount": 500000,
+            "tax": 100000
+          },
+          {
+            "from": 1000000,
+            "upTo": null,
+            "rate": 30,
+            "taxableAmount": 0,
+            "tax": 0
+          }
+        ],
+        "taxBeforeRebate": 112500,
+        "rebateApplied": 0,
+        "marginalReliefApplied": 0,
+        "taxAfterRebate": 112500,
+        "cess": 4500,
+        "totalTax": 117000,
+        "effectiveRatePercent": 9.75,
+        "monthlyTax": 9750,
+        "steps": [
+          {
+            "stepKey": "tax.step.grossIncome",
+            "value": 1200000,
+            "formattedValue": "12,00,000",
+            "descriptionParams": {
+              "salary": 1200000,
+              "other": 0
+            }
+          },
+          {
+            "stepKey": "tax.step.standardDeduction",
+            "value": 50000,
+            "formattedValue": "50,000",
+            "descriptionParams": {
+              "limit": 50000
+            }
+          },
+          {
+            "stepKey": "tax.step.deductions",
+            "value": 150000,
+            "formattedValue": "1,50,000"
+          },
+          {
+            "stepKey": "tax.step.taxableIncome",
+            "value": 1000000,
+            "formattedValue": "10,00,000"
+          },
+          {
+            "stepKey": "tax.step.slabTax",
+            "value": 112500,
+            "formattedValue": "1,12,500"
+          },
+          {
+            "stepKey": "tax.step.rebate",
+            "value": 0,
+            "formattedValue": "0"
+          },
+          {
+            "stepKey": "tax.step.taxAfterRebate",
+            "value": 112500,
+            "formattedValue": "1,12,500"
+          },
+          {
+            "stepKey": "tax.step.cess",
+            "value": 4500,
+            "formattedValue": "4,500",
+            "descriptionParams": {
+              "rate": 4
+            }
+          },
+          {
+            "stepKey": "tax.step.totalTax",
+            "value": 117000,
+            "formattedValue": "1,17,000"
+          }
+        ],
+        "warnings": []
+      },
+      "recommended": "new",
+      "savings": 117000,
+      "savingsPercent": 100,
+      "breakEven": 650000
+    },
+    "rulesVersion": "2026-27",
+    "summary": {
+      "grossIncome": 1200000,
+      "recommendedRegime": "new",
+      "bestTax": 0,
+      "otherTax": 117000,
+      "savings": 117000
+    },
+    "createdAt": "2026-10-25T09:44:47.637Z",
+    "updatedAt": "2026-10-25T09:44:47.637Z"
+  }
+]

@@ -79,12 +79,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     },
     {
       key: "gst",
-      label: t("nav.gst"),
-      href: "/gst-calculator",
+      label: t("nav.gstAndInvoices", "GST & Invoices"),
+      href: "/gst",
       icon: Receipt,
       subItems: [
-        { label: t("nav.gstCalculator"), href: "/gst-calculator" },
-        { label: t("nav.invoices"), href: "/invoices" },
+        { label: t("nav.gstCalculator", "GST Calculator"), href: "/gst" },
+        { label: t("nav.invoices", "Invoices"), href: "/invoices" },
+        { label: t("nav.customers", "Customers"), href: "/invoices/customers" },
+        { label: t("nav.businessProfile", "Business Profile"), href: "/invoices/settings" },
       ],
     },
     {
@@ -142,7 +144,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     {
       key: "account",
       label: t("nav.account"),
-      href: "/settings",
+      href: "/account/profile",
       icon: User,
     },
     {

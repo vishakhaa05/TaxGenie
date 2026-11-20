@@ -5,6 +5,7 @@ const baseQuery = fetchBaseQuery({
   baseUrl: import.meta.env.VITE_API_URL,
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
+    headers.set("x-requested-with", "XMLHttpRequest");
     const auth = (getState() as RootState).auth;
     if (auth?.accessToken) {
       headers.set("Authorization", `Bearer ${auth.accessToken}`);

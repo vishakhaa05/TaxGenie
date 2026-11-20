@@ -1,0 +1,2123 @@
+[
+  {
+    "_id": "6addcf91ded6a875615afb3b",
+    "id": "6addcf91ded6a875615afb3b",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "draft",
+    "invoiceDate": "2026-10-25",
+    "dueDate": "2026-11-09",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "=HYPERLINK(\"http://evil.com\")",
+      "address": "Malicious Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Product",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Product",
+          "description": "Product",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:49.555Z",
+    "updatedAt": "2026-10-25T09:44:49.555Z"
+  },
+  {
+    "_id": "6addcf90ded6a875615afb3a",
+    "id": "6addcf90ded6a875615afb3a",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Bangalore Tech Corp",
+      "gstin": "29XYZAB5678C1Z2",
+      "address": "Tech Park, Bangalore",
+      "state": "Karnataka"
+    },
+    "items": [
+      {
+        "description": "Full Stack Architecture Services",
+        "hsnSac": "998314",
+        "quantity": 2,
+        "unit": "HOURS",
+        "unitPricePaise": 100000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Full Stack Architecture Services",
+          "description": "Full Stack Architecture Services",
+          "hsnOrSac": "998314",
+          "quantity": 2,
+          "unit": "HOURS",
+          "unitPrice": 1000,
+          "discount": 0,
+          "taxableValue": 2000,
+          "rate": 18,
+          "gstAmount": 360,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 360,
+          "total": 2360
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 2000,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 360,
+          "totalGst": 360
+        }
+      ],
+      "subtotal": 2000,
+      "totalCgst": 0,
+      "totalSgst": 0,
+      "totalIgst": 360,
+      "totalGst": 360,
+      "totalBeforeRoundOff": 2360,
+      "roundOff": 0,
+      "grandTotal": 2360,
+      "amountInWords": "Two Thousand Three Hundred Sixty Rupees Only",
+      "supplyType": "inter",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:48.271Z",
+    "updatedAt": "2026-10-25T09:44:48.317Z",
+    "invoiceNumber": "INV-0022"
+  },
+  {
+    "_id": "6addcf8fded6a875615afb39",
+    "id": "6addcf8fded6a875615afb39",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "draft",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client A",
+      "address": "City",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Consulting",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 200000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Consulting",
+          "description": "Consulting",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 2000,
+          "discount": 0,
+          "taxableValue": 2000,
+          "rate": 18,
+          "gstAmount": 360,
+          "cgst": 180,
+          "sgst": 180,
+          "igst": 0,
+          "total": 2360
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 2000,
+          "cgst": 180,
+          "sgst": 180,
+          "igst": 0,
+          "totalGst": 360
+        }
+      ],
+      "subtotal": 2000,
+      "totalCgst": 180,
+      "totalSgst": 180,
+      "totalIgst": 0,
+      "totalGst": 360,
+      "totalBeforeRoundOff": 2360,
+      "roundOff": 0,
+      "grandTotal": 2360,
+      "amountInWords": "Two Thousand Three Hundred Sixty Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:47.937Z",
+    "updatedAt": "2026-10-25T09:44:47.937Z"
+  },
+  {
+    "_id": "6addcf8fded6a875615afb36",
+    "id": "6addcf8fded6a875615afb36",
+    "userId": "6addcf8bded6a875615afb1b",
+    "documentType": "bill_of_supply",
+    "status": "issued",
+    "invoiceDate": "2026-10-20",
+    "dueDate": "2026-11-04",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Unregistered Freelancer",
+      "address": "24 Park St",
+      "state": "Delhi",
+      "pincode": "110001",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Retail Buyer",
+      "address": "City",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Service",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 50000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Service",
+          "description": "Service",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 500,
+          "discount": 0,
+          "taxableValue": 500,
+          "rate": 0,
+          "gstAmount": 0,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 0,
+          "total": 500
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 0,
+          "taxableAmount": 500,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 0,
+          "totalGst": 0
+        }
+      ],
+      "subtotal": 500,
+      "totalCgst": 0,
+      "totalSgst": 0,
+      "totalIgst": 0,
+      "totalGst": 0,
+      "totalBeforeRoundOff": 500,
+      "roundOff": 0,
+      "grandTotal": 500,
+      "amountInWords": "Five Hundred Rupees Only",
+      "supplyType": "inter",
+      "documentType": "bill_of_supply"
+    },
+    "createdAt": "2026-10-25T09:44:47.685Z",
+    "updatedAt": "2026-10-25T09:44:47.885Z",
+    "invoiceNumber": "INV-0001"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb35",
+    "id": "6addcf8eded6a875615afb35",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 8",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 8",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 8",
+          "description": "Item 8",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.487Z",
+    "updatedAt": "2026-10-25T09:44:46.967Z",
+    "invoiceNumber": "INV-0005"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb34",
+    "id": "6addcf8eded6a875615afb34",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 7",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 7",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 7",
+          "description": "Item 7",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.470Z",
+    "updatedAt": "2026-10-25T09:44:46.855Z",
+    "invoiceNumber": "INV-0004"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb33",
+    "id": "6addcf8eded6a875615afb33",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 6",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 6",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 6",
+          "description": "Item 6",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.454Z",
+    "updatedAt": "2026-10-25T09:44:46.784Z",
+    "invoiceNumber": "INV-0003"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb32",
+    "id": "6addcf8eded6a875615afb32",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 5",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 5",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 5",
+          "description": "Item 5",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.438Z",
+    "updatedAt": "2026-10-25T09:44:47.488Z",
+    "invoiceNumber": "INV-0017"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb31",
+    "id": "6addcf8eded6a875615afb31",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 4",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 4",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 4",
+          "description": "Item 4",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.421Z",
+    "updatedAt": "2026-10-25T09:44:47.469Z",
+    "invoiceNumber": "INV-0016"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb30",
+    "id": "6addcf8eded6a875615afb30",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 3",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 3",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 3",
+          "description": "Item 3",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.404Z",
+    "updatedAt": "2026-10-25T09:44:47.443Z",
+    "invoiceNumber": "INV-0015"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2f",
+    "id": "6addcf8eded6a875615afb2f",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 2",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 2",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 2",
+          "description": "Item 2",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.387Z",
+    "updatedAt": "2026-10-25T09:44:46.664Z",
+    "invoiceNumber": "INV-0002"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2e",
+    "id": "6addcf8eded6a875615afb2e",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 1",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 1",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 1",
+          "description": "Item 1",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.371Z",
+    "updatedAt": "2026-10-25T09:44:47.422Z",
+    "invoiceNumber": "INV-0014"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2d",
+    "id": "6addcf8eded6a875615afb2d",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 20",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 20",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 20",
+          "description": "Item 20",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.353Z",
+    "updatedAt": "2026-10-25T09:44:47.383Z",
+    "invoiceNumber": "INV-0013"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2c",
+    "id": "6addcf8eded6a875615afb2c",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 19",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 19",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 19",
+          "description": "Item 19",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.336Z",
+    "updatedAt": "2026-10-25T09:44:47.351Z",
+    "invoiceNumber": "INV-0012"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2b",
+    "id": "6addcf8eded6a875615afb2b",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 18",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 18",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 18",
+          "description": "Item 18",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.319Z",
+    "updatedAt": "2026-10-25T09:44:47.329Z",
+    "invoiceNumber": "INV-0011"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb2a",
+    "id": "6addcf8eded6a875615afb2a",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 17",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 17",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 17",
+          "description": "Item 17",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.303Z",
+    "updatedAt": "2026-10-25T09:44:47.305Z",
+    "invoiceNumber": "INV-0010"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb29",
+    "id": "6addcf8eded6a875615afb29",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 16",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 16",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 16",
+          "description": "Item 16",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.287Z",
+    "updatedAt": "2026-10-25T09:44:47.281Z",
+    "invoiceNumber": "INV-0009"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb28",
+    "id": "6addcf8eded6a875615afb28",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 15",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 15",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 15",
+          "description": "Item 15",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.271Z",
+    "updatedAt": "2026-10-25T09:44:47.250Z",
+    "invoiceNumber": "INV-0008"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb27",
+    "id": "6addcf8eded6a875615afb27",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 14",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 14",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 14",
+          "description": "Item 14",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.255Z",
+    "updatedAt": "2026-10-25T09:44:47.201Z",
+    "invoiceNumber": "INV-0007"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb26",
+    "id": "6addcf8eded6a875615afb26",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 13",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 13",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 13",
+          "description": "Item 13",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.238Z",
+    "updatedAt": "2026-10-25T09:44:47.150Z",
+    "invoiceNumber": "INV-0006"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb25",
+    "id": "6addcf8eded6a875615afb25",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 12",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 12",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 12",
+          "description": "Item 12",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.220Z",
+    "updatedAt": "2026-10-25T09:44:47.600Z",
+    "invoiceNumber": "INV-0021"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb24",
+    "id": "6addcf8eded6a875615afb24",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 11",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 11",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 11",
+          "description": "Item 11",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.201Z",
+    "updatedAt": "2026-10-25T09:44:47.570Z",
+    "invoiceNumber": "INV-0020"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb23",
+    "id": "6addcf8eded6a875615afb23",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 10",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 10",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 10",
+          "description": "Item 10",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.184Z",
+    "updatedAt": "2026-10-25T09:44:47.539Z",
+    "invoiceNumber": "INV-0019"
+  },
+  {
+    "_id": "6addcf8eded6a875615afb22",
+    "id": "6addcf8eded6a875615afb22",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "issued",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Client 9",
+      "address": "Address",
+      "state": "Maharashtra"
+    },
+    "items": [
+      {
+        "description": "Item 9",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 10000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Item 9",
+          "description": "Item 9",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 100,
+          "discount": 0,
+          "taxableValue": 100,
+          "rate": 18,
+          "gstAmount": 18,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "total": 118
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 100,
+          "cgst": 9,
+          "sgst": 9,
+          "igst": 0,
+          "totalGst": 18
+        }
+      ],
+      "subtotal": 100,
+      "totalCgst": 9,
+      "totalSgst": 9,
+      "totalIgst": 0,
+      "totalGst": 18,
+      "totalBeforeRoundOff": 118,
+      "roundOff": 0,
+      "grandTotal": 118,
+      "amountInWords": "One Hundred Eighteen Rupees Only",
+      "supplyType": "intra",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:46.167Z",
+    "updatedAt": "2026-10-25T09:44:47.520Z",
+    "invoiceNumber": "INV-0018"
+  },
+  {
+    "_id": "6addcf8dded6a875615afb20",
+    "id": "6addcf8dded6a875615afb20",
+    "userId": "6addcf88ded6a875615afb17",
+    "documentType": "tax_invoice",
+    "status": "cancelled",
+    "invoiceDate": "2026-10-15",
+    "dueDate": "2026-10-30",
+    "financialYear": "2026-27",
+    "seller": {
+      "legalName": "Sharma Enterprises",
+      "tradeName": "Sharma Tech Solutions",
+      "gstin": "27ABCDE1234F1Z0",
+      "pan": "ABCDE1234F",
+      "address": "101 Nariman Point, Marine Drive",
+      "state": "Maharashtra",
+      "pincode": "400021",
+      "phone": "+91 9876543210",
+      "email": "billing@sharma.in",
+      "signatureLabel": "Authorised Signatory"
+    },
+    "buyer": {
+      "name": "Acme Corp",
+      "gstin": "29XYZAB5678C1Z2",
+      "address": "42 MG Road, Bangalore",
+      "state": "Karnataka"
+    },
+    "items": [
+      {
+        "description": "Web Development Services (Updated)",
+        "quantity": 1,
+        "unit": "NOS",
+        "unitPricePaise": 100000,
+        "discountType": "amount",
+        "discountValue": 0,
+        "gstRate": 18
+      }
+    ],
+    "priceIncludesGst": false,
+    "engineResult": {
+      "items": [
+        {
+          "name": "Web Development Services (Updated)",
+          "description": "Web Development Services (Updated)",
+          "quantity": 1,
+          "unit": "NOS",
+          "unitPrice": 1000,
+          "discount": 0,
+          "taxableValue": 1000,
+          "rate": 18,
+          "gstAmount": 180,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 180,
+          "total": 1180
+        }
+      ],
+      "taxSummary": [
+        {
+          "rate": 18,
+          "taxableAmount": 1000,
+          "cgst": 0,
+          "sgst": 0,
+          "igst": 180,
+          "totalGst": 180
+        }
+      ],
+      "subtotal": 1000,
+      "totalCgst": 0,
+      "totalSgst": 0,
+      "totalIgst": 180,
+      "totalGst": 180,
+      "totalBeforeRoundOff": 1180,
+      "roundOff": 0,
+      "grandTotal": 1180,
+      "amountInWords": "One Thousand One Hundred Eighty Rupees Only",
+      "supplyType": "inter",
+      "documentType": "tax_invoice"
+    },
+    "notes": "Thank you for your business.",
+    "terms": "Payment due within 15 days.",
+    "paymentDetailsText": "UPI ID: sharma@upi | HDFC Bank A/c 501002345678",
+    "createdAt": "2026-10-25T09:44:45.572Z",
+    "updatedAt": "2026-10-25T09:44:46.066Z",
+    "invoiceNumber": "INV-0001",
+    "paidAt": null,
+    "cancelledAt": "2026-10-25T09:44:46.064Z"
+  }
+]

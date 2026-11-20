@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "6addcf8dded6a875615afb21",
+    "userId": "6addcf88ded6a875615afb17",
+    "key": "INV-2026-27",
+    "nextNumber": 22,
+    "createdAt": "2026-10-25T09:44:45.732Z",
+    "updatedAt": "2026-10-25T09:44:48.306Z"
+  },
+  {
+    "_id": "6addcf8fded6a875615afb38",
+    "userId": "6addcf8bded6a875615afb1b",
+    "key": "INV-2026-27",
+    "nextNumber": 1,
+    "createdAt": "2026-10-25T09:44:47.879Z",
+    "updatedAt": "2026-10-25T09:44:47.879Z"
+  }
+]

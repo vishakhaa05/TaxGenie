@@ -2,6 +2,8 @@ import "dotenv/config";
 import "./src/config/passport.config";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
+import helmet from "helmet";
+import cookieParser from "cookie-parser";
 import passport from "passport";
 import rateLimit from "express-rate-limit";
 import { Env } from "./src/config/env.config";
@@ -12,6 +14,8 @@ import connctDatabase from "./src/config/database.config";
 import authRoutes from "./src/routes/auth.routes";
 import { passportAuthenticateJwt } from "./src/config/passport.config";
 import userRoutes from "./src/routes/user.routes";
+import calculationRoutes from "./src/routes/calculation.routes";
+import dashboardRoutes from "./src/routes/dashboard.routes";
 import transactionRoutes from "./src/routes/transaction.routes";
 import { initializeCrons } from "./src/cron/index";
 import reportRoutes from "./src/routes/report.routes";
@@ -22,10 +26,15 @@ import gstRoutes from "./src/routes/gst.routes";
 import rulesRoutes from "./src/routes/rules.routes";
 import aiAdvisorRoutes from "./src/routes/ai-advisor.routes";
 import subscriptionRoutes from "./src/routes/subscription.routes";
+import businessProfileRoutes from "./src/routes/business-profile.routes";
+import customerRoutes from "./src/routes/customer.routes";
+import invoiceRoutes from "./src/routes/invoice.routes";
 
 export const app = express();
 const BASE_PATH = Env.BASE_PATH;
 
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -82,7 +91,13 @@ app.use(`${BASE_PATH}/gst`, publicEngineLimiter, gstRoutes);
 
 // Auth & Protected Feature Routes
 app.use(`${BASE_PATH}/auth`, authRoutes);
-app.use(`${BASE_PATH}/user`, passportAuthenticateJwt, userRoutes);
+app.use(`${BASE_PATH}/user`, userRoutes);
+app.use(`${BASE_PATH}/users`, userRoutes);
+app.use(`${BASE_PATH}/calculations`, calculationRoutes);
+app.use(`${BASE_PATH}/dashboard`, dashboardRoutes);
+app.use(`${BASE_PATH}/business-profile`, businessProfileRoutes);
+app.use(`${BASE_PATH}/customers`, customerRoutes);
+app.use(`${BASE_PATH}/invoices`, invoiceRoutes);
 app.use(`${BASE_PATH}/transaction`, passportAuthenticateJwt, transactionRoutes);
 app.use(`${BASE_PATH}/report`, passportAuthenticateJwt, reportRoutes);
 app.use(`${BASE_PATH}/analytics`, passportAuthenticateJwt, analyticsRoutes);

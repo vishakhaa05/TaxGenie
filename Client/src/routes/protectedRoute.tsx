@@ -1,13 +1,22 @@
-import { useTypedSelector } from "@/app/hook";
-import { Navigate, Outlet } from "react-router-dom";
-import { AUTH_ROUTES } from "./common/routePath";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuth } from "@/auth/useAuth";
 
 const ProtectedRoute = () => {
-  const { accessToken, user } = useTypedSelector((state) => state.auth);
+  const { user, isLoading } = useAuth();
+  const location = useLocation();
 
-  if (accessToken && user) return <Outlet />;
+  if (isLoading) {
+    return (
+      <div className="min-h-[50vh] flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin" />
+      </div>
+    );
+  }
 
-  return <Navigate to={AUTH_ROUTES.SIGN_IN} replace />;
+  if (user) return <Outlet />;
+
+  return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 export default ProtectedRoute;
+

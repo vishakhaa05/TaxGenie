@@ -47,7 +47,7 @@ function AppRoutes() {
                 path={route.path}
                 element={route.element}
               >
-                {route.children?.map((childRoute) => (
+                {(route as any).children?.map((childRoute: any) => (
                   <Route
                     key={childRoute.path || "index"}
                     index={childRoute.index}

@@ -67,10 +67,13 @@ export function calculateInvoice(
   let totalSgstPaise = 0;
   let totalIgstPaise = 0;
 
+  const isBillOfSupply = input.documentType === "bill_of_supply";
+
   for (const item of items) {
-    if (!item.name || typeof item.name !== "string" || !item.name.trim()) {
+    const itemName = item.name?.trim() || item.description?.trim();
+    if (!itemName) {
       throw new EngineValidationError(
-        "Each invoice item must have a valid name",
+        "Each invoice item must have a valid name or description",
         "INVALID_ITEM_NAME",
         "name"
       );
@@ -83,7 +86,7 @@ export function calculateInvoice(
       item.quantity <= 0
     ) {
       throw new EngineValidationError(
-        `Item "${item.name}" quantity must be a positive number, got: ${item.quantity}`,
+        `Item "${itemName}" quantity must be a positive number, got: ${item.quantity}`,
         "INVALID_QUANTITY",
         "quantity"
       );
@@ -96,7 +99,7 @@ export function calculateInvoice(
       item.unitPrice < 0
     ) {
       throw new EngineValidationError(
-        `Item "${item.name}" unit price must be a non-negative number, got: ${item.unitPrice}`,
+        `Item "${itemName}" unit price must be a non-negative number, got: ${item.unitPrice}`,
         "INVALID_UNIT_PRICE",
         "unitPrice"
       );
@@ -104,16 +107,24 @@ export function calculateInvoice(
 
     if (!rules.supportedRates.includes(item.rate)) {
       throw new GstCalculationError(
-        `Item "${item.name}" has unsupported GST rate: ${item.rate}%. Allowed rates: ${rules.supportedRates.join(", ")}%`,
+        `Item "${itemName}" has unsupported GST rate: ${item.rate}%. Allowed rates: ${rules.supportedRates.join(", ")}%`,
         "UNSUPPORTED_GST_RATE",
         item.rate
       );
     }
 
-    const discountRupees = item.discount || 0;
+    let discountRupees = 0;
+    if (item.discountType === "percent" && typeof item.discountValue === "number") {
+      discountRupees = (item.quantity * item.unitPrice * item.discountValue) / 100;
+    } else if (typeof item.discount === "number") {
+      discountRupees = item.discount;
+    } else if (item.discountType === "amount" && typeof item.discountValue === "number") {
+      discountRupees = item.discountValue;
+    }
+
     if (discountRupees < 0) {
       throw new EngineValidationError(
-        `Item "${item.name}" discount cannot be negative`,
+        `Item "${itemName}" discount cannot be negative`,
         "INVALID_DISCOUNT",
         "discount"
       );
@@ -127,7 +138,11 @@ export function calculateInvoice(
     let lineGstPaise: number;
     let totalLinePaise: number;
 
-    if (priceIncludesGst) {
+    if (isBillOfSupply) {
+      taxablePaise = Math.max(0, grossLinePaise - discountPaise);
+      lineGstPaise = 0;
+      totalLinePaise = taxablePaise;
+    } else if (priceIncludesGst) {
       totalLinePaise = Math.max(0, grossLinePaise - discountPaise);
       taxablePaise = roundHalfUp((totalLinePaise * 100) / (100 + item.rate));
       lineGstPaise = totalLinePaise - taxablePaise;
@@ -141,11 +156,13 @@ export function calculateInvoice(
     let lineSgstPaise = 0;
     let lineIgstPaise = 0;
 
-    if (isIntra) {
-      lineCgstPaise = Math.floor(lineGstPaise / 2);
-      lineSgstPaise = lineGstPaise - lineCgstPaise;
-    } else {
-      lineIgstPaise = lineGstPaise;
+    if (!isBillOfSupply) {
+      if (isIntra) {
+        lineCgstPaise = Math.floor(lineGstPaise / 2);
+        lineSgstPaise = lineGstPaise - lineCgstPaise;
+      } else {
+        lineIgstPaise = lineGstPaise;
+      }
     }
 
     subtotalPaise += taxablePaise;
@@ -154,13 +171,15 @@ export function calculateInvoice(
     totalIgstPaise += lineIgstPaise;
 
     lineResults.push({
-      name: item.name,
+      name: itemName,
+      description: itemName,
       hsnOrSac: item.hsnOrSac,
       quantity: item.quantity,
+      unit: item.unit || "NOS",
       unitPrice: item.unitPrice,
-      discount: discountRupees,
+      discount: paiseToRupees(discountPaise),
       taxableValue: paiseToRupees(taxablePaise),
-      rate: item.rate,
+      rate: isBillOfSupply ? 0 : item.rate,
       gstAmount: paiseToRupees(lineGstPaise),
       cgst: paiseToRupees(lineCgstPaise),
       sgst: paiseToRupees(lineSgstPaise),
@@ -169,7 +188,8 @@ export function calculateInvoice(
     });
 
     // Update tax summary group
-    const summary = taxSummaryMap.get(item.rate) || {
+    const summaryRate = isBillOfSupply ? 0 : item.rate;
+    const summary = taxSummaryMap.get(summaryRate) || {
       taxablePaise: 0,
       cgstPaise: 0,
       sgstPaise: 0,
@@ -181,7 +201,7 @@ export function calculateInvoice(
     summary.sgstPaise += lineSgstPaise;
     summary.igstPaise += lineIgstPaise;
     summary.totalGstPaise += lineGstPaise;
-    taxSummaryMap.set(item.rate, summary);
+    taxSummaryMap.set(summaryRate, summary);
   }
 
   const taxSummary: InvoiceTaxSummaryItem[] = Array.from(
@@ -219,5 +239,6 @@ export function calculateInvoice(
     grandTotal: grandTotalRupees,
     amountInWords: amountInWords(grandTotalRupees),
     supplyType,
+    documentType: input.documentType || "tax_invoice",
   };
 }

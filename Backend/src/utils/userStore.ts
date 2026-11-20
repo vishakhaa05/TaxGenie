@@ -50,7 +50,7 @@ export async function findUserByEmail(email: string): Promise<any | null> {
 
   if (mongoose.connection.readyState === 1) {
     try {
-      const user = await UserModel.findOne({ email: normalizedEmail });
+      const user = await (UserModel as any).findOne({ email: normalizedEmail });
       if (user) return user;
     } catch (e) {
       console.warn("MongoDB find failed, checking local store:", e);
@@ -78,12 +78,13 @@ export async function findUserByEmail(email: string): Promise<any | null> {
 export async function findUserById(id: string): Promise<any | null> {
   if (mongoose.connection.readyState === 1) {
     try {
-      const user = await UserModel.findById(id);
+      const user = await (UserModel as any).findById(id);
       if (user) return user;
     } catch (e) {
       console.warn("MongoDB findById failed, checking local store:", e);
     }
   }
+
 
   const users = readLocalUsers();
   const localUser = users.find((u) => u.id === id || u._id === id);
@@ -173,7 +174,8 @@ export async function updateUserRecord(
 ): Promise<any> {
   if (mongoose.connection.readyState === 1) {
     try {
-      const user = await UserModel.findById(id);
+      const user = await (UserModel as any).findById(id);
+
       if (user) {
         if (update.name) user.name = update.name;
         if (update.profilePicture) user.profilePicture = update.profilePicture;

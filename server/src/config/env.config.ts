@@ -5,13 +5,22 @@ const envConfig = () => ({
 
   PORT: getEnv("PORT", "8000"),
   BASE_PATH: getEnv("BASE_PATH", "/api"),
-  MONGO_URI: getEnv("MONGO_URI"),
+  MONGO_URI: getEnv("MONGODB_URI", getEnv("MONGO_URI")),
 
-  JWT_SECRET: getEnv("JWT_SECRET", "secert_jwt"),
+  JWT_SECRET: getEnv("JWT_ACCESS_SECRET", getEnv("JWT_SECRET", "secert_jwt")),
   JWT_EXPIRES_IN: getEnv("JWT_EXPIRES_IN", "15m") as string,
 
   JWT_REFRESH_SECRET: getEnv("JWT_REFRESH_SECRET", "secert_jwt_refresh"),
   JWT_REFRESH_EXPIRES_IN: getEnv("JWT_REFRESH_EXPIRES_IN", "7d") as string,
+
+  COOKIE_DOMAIN: getEnv("COOKIE_DOMAIN", "localhost"),
+  FRONTEND_ORIGIN: getEnv("CLIENT_URL", getEnv("FRONTEND_ORIGIN", "http://localhost:5173")),
+
+  SMTP_HOST: getEnv("SMTP_HOST", "sandbox.smtp.mailtrap.io"),
+  SMTP_PORT: Number(getEnv("SMTP_PORT", "2525")),
+  SMTP_USER: getEnv("SMTP_USER", ""),
+  SMTP_PASS: getEnv("SMTP_PASS", ""),
+  EMAIL_FROM: getEnv("EMAIL_FROM", "TaxGenie <no-reply@taxgenie.in>"),
 
   GEMINI_API_KEY: getEnv("GEMINI_API_KEY"),
 
@@ -21,8 +30,6 @@ const envConfig = () => ({
 
   RESEND_API_KEY: getEnv("RESEND_API_KEY"),
   RESEND_MAILER_SENDER: getEnv("RESEND_MAILER_SENDER", ""),
-
-  FRONTEND_ORIGIN: getEnv("FRONTEND_ORIGIN", "localhost"),
 });
 
 export const Env = envConfig();

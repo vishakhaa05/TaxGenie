@@ -83,6 +83,18 @@ describe("Thin API Layer Integration Tests", () => {
     });
   });
 
+  describe("GET /api/gst/meta", () => {
+    it("returns states list and supported rates", async () => {
+      const res = await request(app).get("/api/gst/meta");
+      expect(res.status).toBe(200);
+      expect(res.body.success).toBe(true);
+      expect(Array.isArray(res.body.data.states)).toBe(true);
+      expect(res.body.data.states.length).toBeGreaterThan(30);
+      expect(res.body.data.supportedRates).toEqual([0, 5, 18, 40]);
+      expect(res.body.data.defaultRate).toBe(18);
+    });
+  });
+
   describe("POST /api/gst/calculate", () => {
     it("returns accurate GST calculation with intra-state split", async () => {
       const payload = {
@@ -103,6 +115,7 @@ describe("Thin API Layer Integration Tests", () => {
       expect(res.body.data.sgst).toBe(4500);
       expect(res.body.data.total).toBe(59000);
       expect(res.body.data.supplyType).toBe("intra");
+      expect(res.body.data.amountInWords).toBe("Fifty Nine Thousand Rupees Only");
     });
 
     it("returns 400 for unsupported GST rate", async () => {

@@ -8,6 +8,8 @@ import { RulesService } from "../services/rules.service";
 import { calculateGst } from "../engine/gst/calculate";
 import { calculateInvoice } from "../engine/gst/invoice";
 import { validateGstin } from "../engine/gst/gstin";
+import { amountInWords } from "../engine/gst/amountInWords";
+import { GST_STATES } from "../engine/gst/states";
 import { GstRulesConfig } from "../engine/gst/types";
 
 export class GstController {
@@ -17,6 +19,28 @@ export class GstController {
       supportedRates: [0, 5, 18, 40],
       defaultRate: 18,
     };
+  }
+
+  public static async getGstMetaEndpoint(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    try {
+      const taxYear = typeof req.query.taxYear === "string" ? req.query.taxYear : "2026-27";
+      const gstRules = await GstController.getGstRules(taxYear);
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          states: GST_STATES,
+          supportedRates: gstRules.supportedRates,
+          defaultRate: gstRules.defaultRate,
+        },
+      });
+    } catch (error) {
+      next(error);
+    }
   }
 
   public static async calculateGstEndpoint(
@@ -53,7 +77,10 @@ export class GstController {
 
       return res.status(200).json({
         success: true,
-        data: result,
+        data: {
+          ...result,
+          amountInWords: amountInWords(result.total),
+        },
       });
     } catch (error: any) {
       if (error?.code === "UNSUPPORTED_GST_RATE") {

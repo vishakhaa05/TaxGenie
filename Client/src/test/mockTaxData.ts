@@ -5,7 +5,6 @@ export const MOCK_TAX_RULES: TaxYearRules = {
   financialYear: "2026-2027",
   assessmentYear: "2027-2028",
   cess: 4,
-  cessRate: 0.04,
   roundingToNearestTen: false,
   newRegime: {
     slabs: [

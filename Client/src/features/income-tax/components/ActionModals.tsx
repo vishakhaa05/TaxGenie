@@ -16,6 +16,10 @@ import {
 import { InfoTooltip } from "@/components/ui/InfoTooltip";
 import { cn } from "@/lib/utils";
 
+import { useWizard } from "@/features/income-tax/context/WizardContext";
+import { useAuth } from "@/auth/useAuth";
+import { SaveDialog } from "@/features/calculations/SaveDialog";
+
 interface ActionModalsProps {
   onEditAnswers: () => void;
   onStartOver: () => void;
@@ -29,21 +33,25 @@ export const ActionModals: React.FC<ActionModalsProps> = ({
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const reduxContext = React.useContext(ReactReduxContext);
-  const user = reduxContext?.store?.getState()?.auth?.user || null;
+  const { user } = useAuth();
+  const { formData, result } = useWizard();
 
-  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [showAiModal, setShowAiModal] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
+  const bestTax =
+    result?.recommended === "new"
+      ? result.newRegime.totalTax
+      : result?.oldRegime?.totalTax;
+
+  const grossIncome =
+    (Number(formData.salaryAmount) || 0) + (Number(formData.otherIncome) || 0);
+
   const handleSaveClick = () => {
-    if (!user) {
-      setShowLoginModal(true);
-    } else {
-      setSavedSuccess(true);
-      setTimeout(() => setSavedSuccess(false), 3000);
-    }
+    setShowSaveDialog(true);
   };
+
 
   return (
     <div className={cn("space-y-4", className)}>
@@ -124,58 +132,24 @@ export const ActionModals: React.FC<ActionModalsProps> = ({
         </p>
       </div>
 
-      {/* Guest Login Modal for Saving (Phase 5 placeholder) */}
-      {showLoginModal && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200"
-        >
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-5 relative">
-            <button
-              type="button"
-              onClick={() => setShowLoginModal(false)}
-              className="absolute top-4 right-4 p-1.5 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
-              aria-label="Close dialog"
-            >
-              <X className="w-5 h-5" />
-            </button>
+      {/* Real Save Dialog */}
+      <SaveDialog
+        open={showSaveDialog}
+        onClose={() => setShowSaveDialog(false)}
+        type="income_tax"
+        inputs={formData}
+        taxYear={formData.taxYear || "2026-27"}
+        summaryInfo={{
+          grossIncome,
+          bestTax,
+          recommendedRegime: result?.recommended,
+        }}
+        onSaved={() => {
+          setSavedSuccess(true);
+          setTimeout(() => setSavedSuccess(false), 3000);
+        }}
+      />
 
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-              <Bookmark className="w-6 h-6" />
-            </div>
-
-            <div className="space-y-1.5">
-              <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
-                {t("incomeTax.modals.saveTitle", "Save Your Tax Calculation")}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-                {t(
-                  "incomeTax.modals.saveSubtitle",
-                  "Sign in to TaxGenie to save this comparison to your dashboard, track changes across years, and export reports anytime."
-                )}
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 pt-2">
-              <button
-                type="button"
-                onClick={() => setShowLoginModal(false)}
-                className="flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
-              >
-                {t("common.cancel", "Cancel")}
-              </button>
-              <Link
-                to="/sign-in"
-                className="flex-1 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
-              >
-                <LogIn className="w-4 h-4" />
-                <span>{t("common.login", "Log In")}</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* AI Advisor Modal (Phase 7 placeholder) */}
       {showAiModal && (

@@ -1,0 +1,185 @@
+{
+  "TODO": "Verify every rate against the official GST rate notifications before launch.",
+  "items": [
+    {
+      "id": "item_fresh_milk",
+      "name_en": "Fresh Milk & Curd (Unpackaged)",
+      "name_hi": "ताज़ा दूध और दही (खुला)",
+      "rate": 0,
+      "category": "Dairy & Animal Products",
+      "hsn": "0401",
+      "verified": false
+    },
+    {
+      "id": "item_fresh_fruits",
+      "name_en": "Fresh Fruits & Vegetables",
+      "name_hi": "ताज़े फल और सब्ज़ियाँ",
+      "rate": 0,
+      "category": "Agriculture",
+      "hsn": "0701",
+      "verified": false
+    },
+    {
+      "id": "item_unbranded_grains",
+      "name_en": "Unbranded Rice, Wheat & Pulses",
+      "name_hi": "खुले चावल, गेहूं और दालें",
+      "rate": 0,
+      "category": "Food Grains",
+      "hsn": "1006",
+      "verified": false
+    },
+    {
+      "id": "item_healthcare",
+      "name_en": "Healthcare & Hospital Diagnostic Services",
+      "name_hi": "स्वास्थ्य और अस्पताल जांच सेवाएं",
+      "rate": 0,
+      "category": "Services",
+      "hsn": "9993",
+      "verified": false
+    },
+    {
+      "id": "item_education",
+      "name_en": "School & College Educational Services",
+      "name_hi": "स्कूल और कॉलेज शिक्षा सेवाएं",
+      "rate": 0,
+      "category": "Services",
+      "hsn": "9992",
+      "verified": false
+    },
+    {
+      "id": "item_packaged_atta",
+      "name_en": "Pre-packaged & Labeled Wheat Flour (Atta)",
+      "name_hi": "पैक्ड और लेबल वाला आटा",
+      "rate": 5,
+      "category": "Food Grains",
+      "hsn": "1101",
+      "verified": false
+    },
+    {
+      "id": "item_packaged_paneer",
+      "name_en": "Packaged Paneer & Dairy Spreads",
+      "name_hi": "पैक्ड पनीर और मक्खन",
+      "rate": 5,
+      "category": "Dairy",
+      "hsn": "0406",
+      "verified": false
+    },
+    {
+      "id": "item_tea_coffee",
+      "name_en": "Tea & Coffee Beans/Powder",
+      "name_hi": "चाय और कॉफी",
+      "rate": 5,
+      "category": "Beverages",
+      "hsn": "0902",
+      "verified": false
+    },
+    {
+      "id": "item_medicines",
+      "name_en": "Life-Saving Essential Medicines & Insulin",
+      "name_hi": "ज़रूरी जीवनरक्षक दवाएं और इंसुलिन",
+      "rate": 5,
+      "category": "Healthcare",
+      "hsn": "3004",
+      "verified": false
+    },
+    {
+      "id": "item_solar_equipment",
+      "name_en": "Solar Power Generating Modules & Devices",
+      "name_hi": "सोलर पैनल और ऊर्जा उपकरण",
+      "rate": 5,
+      "category": "Renewable Energy",
+      "hsn": "8419",
+      "verified": false
+    },
+    {
+      "id": "item_economy_apparel",
+      "name_en": "Standard Footwear & Apparel (Tier 1)",
+      "name_hi": "मानक जूते और कपड़े (टियर 1)",
+      "rate": 5,
+      "category": "Apparel",
+      "hsn": "6403",
+      "verified": false
+    },
+    {
+      "id": "item_it_software",
+      "name_en": "Software Development & IT SaaS Services",
+      "name_hi": "सॉफ्टवेयर डेवलपमेंट और आईटी सेवाएं",
+      "rate": 18,
+      "category": "Technology",
+      "hsn": "998314",
+      "verified": false
+    },
+    {
+      "id": "item_professional_consulting",
+      "name_en": "CA, Legal & Management Consulting Services",
+      "name_hi": "सीए, कानूनी और प्रबंधन परामर्श सेवाएं",
+      "rate": 18,
+      "category": "Professional Services",
+      "hsn": "9982",
+      "verified": false
+    },
+    {
+      "id": "item_freelance_marketing",
+      "name_en": "Freelance Design, Content & Digital Marketing",
+      "name_hi": "फ्रीलांस डिजाइन, कंटेंट और डिजिटल मार्केटिंग",
+      "rate": 18,
+      "category": "Marketing & Creative",
+      "hsn": "998361",
+      "verified": false
+    },
+    {
+      "id": "item_telecom",
+      "name_en": "Broadband Internet & Mobile Telecom Services",
+      "name_hi": "ब्रॉडबैंड इंटरनेट और मोबाइल सेवाएं",
+      "rate": 18,
+      "category": "Utilities",
+      "hsn": "9984",
+      "verified": false
+    },
+    {
+      "id": "item_financial_services",
+      "name_en": "Banking & Financial Services (Loan Processing)",
+      "name_hi": "बैंकिंग और वित्तीय सेवाएं (ऋण प्रोसेसिंग)",
+      "rate": 18,
+      "category": "Financial",
+      "hsn": "9971",
+      "verified": false
+    },
+    {
+      "id": "item_restaurant_services",
+      "name_en": "AC Restaurant & Food Catering Services",
+      "name_hi": "एसी रेस्तरां और खानपान सेवाएं",
+      "rate": 18,
+      "category": "Hospitality",
+      "hsn": "9963",
+      "verified": false
+    },
+    {
+      "id": "item_aerated_drinks",
+      "name_en": "Aerated Flavoured Beverages / Soft Drinks",
+      "name_hi": "कार्बोनेटेड पेय और शीतल पेय",
+      "rate": 40,
+      "category": "Beverages",
+      "hsn": "2202",
+      "verified": false
+    },
+    {
+      "id": "item_pan_masala",
+      "name_en": "Pan Masala & Tobacco Products",
+      "name_hi": "पान मसाला और तंबाकू उत्पाद",
+      "rate": 40,
+      "category": "Special Goods",
+      "hsn": "2106",
+      "verified": false
+    },
+    {
+      "id": "item_luxury_cars",
+      "name_en": "High-End Luxury Automobiles / Motor Cars",
+      "name_hi": "लक्जरी मोटर गाड़ियां और कारें",
+      "rate": 40,
+      "category": "Automotive",
+      "hsn": "8703",
+      "verified": false
+    }
+  ]
+}

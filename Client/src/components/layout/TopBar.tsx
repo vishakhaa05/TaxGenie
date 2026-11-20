@@ -15,9 +15,7 @@ import {
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitch from "./LanguageSwitch";
 import Logo from "../logo/logo";
-import { useTypedSelector } from "@/app/hook";
-import { useDispatch } from "react-redux";
-import { logout } from "@/features/auth/authSlice";
+import { useAuth } from "@/auth/useAuth";
 
 interface TopBarProps {
   onToggleSidebar: () => void;
@@ -25,17 +23,17 @@ interface TopBarProps {
 
 export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const { user } = useTypedSelector((state) => state.auth);
+  const { user, logout } = useAuth();
 
   const [showNotifications, setShowNotifications] = useState(false);
   const [showHelpModal, setShowHelpModal] = useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
 
-  const handleLogout = () => {
-    dispatch(logout());
+  const handleLogout = async () => {
+    await logout();
     setShowUserDropdown(false);
   };
+
 
   return (
     <>
@@ -203,28 +201,28 @@ export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
                       <p className="text-[11px] text-slate-400 truncate">{user.email}</p>
                     </div>
                     <Link
-                      to="/settings"
+                      to="/account/profile"
                       onClick={() => setShowUserDropdown(false)}
                       className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                     >
                       <UserIcon className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>{t("common.profile")}</span>
+                      <span>{t("common.profile", "Profile & Preferences")}</span>
                     </Link>
                     <Link
-                      to="/settings"
+                      to="/history"
                       onClick={() => setShowUserDropdown(false)}
                       className="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                     >
-                      <Settings className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>{t("common.settings")}</span>
+                      <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                      <span>{t("history.title", "Saved Calculations")}</span>
                     </Link>
                     <button
                       type="button"
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors text-left"
+                      className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors text-left cursor-pointer"
                     >
                       <LogOut className="w-3.5 h-3.5" />
-                      <span>{t("common.logout")}</span>
+                      <span>{t("common.logout", "Sign Out")}</span>
                     </button>
                   </div>
                 )}
@@ -232,13 +230,20 @@ export const TopBar: React.FC<TopBarProps> = ({ onToggleSidebar }) => {
             ) : (
               <div className="flex items-center gap-2 ml-1">
                 <Link
-                  to="/sign-in"
+                  to="/login"
+                  className="px-3 py-1.5 text-xs font-semibold rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                >
+                  {t("common.login", "Log In")}
+                </Link>
+                <Link
+                  to="/register"
                   className="px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm shadow-indigo-600/30 transition-all hover:shadow-md cursor-pointer"
                 >
-                  {t("common.login")}
+                  {t("auth.signUp", "Sign Up")}
                 </Link>
               </div>
             )}
+
           </div>
         </div>
       </header>

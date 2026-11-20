@@ -38,12 +38,16 @@ export interface GstResult {
 }
 
 export interface InvoiceItemInput {
-  name: string;
+  name?: string | undefined;
+  description?: string | undefined;
   hsnOrSac?: string | undefined;
   quantity: number;
+  unit?: string | undefined;
   unitPrice: number; // in Rupees
   rate: number; // percentage
   discount?: number | undefined; // total line discount in Rupees (default 0)
+  discountType?: "percent" | "amount" | undefined;
+  discountValue?: number | undefined;
 }
 
 export interface InvoiceInput {
@@ -51,12 +55,15 @@ export interface InvoiceInput {
   sellerState: string;
   buyerState: string;
   priceIncludesGst: boolean;
+  documentType?: "tax_invoice" | "bill_of_supply" | undefined;
 }
 
 export interface InvoiceItemResult {
   name: string;
+  description?: string | undefined;
   hsnOrSac?: string | undefined;
   quantity: number;
+  unit?: string | undefined;
   unitPrice: number;
   discount: number;
   taxableValue: number;
@@ -90,6 +97,7 @@ export interface InvoiceResult {
   grandTotal: number; // in whole rupees
   amountInWords: string;
   supplyType: SupplyType;
+  documentType?: "tax_invoice" | "bill_of_supply" | undefined;
 }
 
 export interface GstinValidationResult {

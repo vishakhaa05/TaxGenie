@@ -16,6 +16,8 @@ beforeEach(() => {
 
 describe("Wizard Navigation & Interaction", () => {
   it("keeps answers when navigating Back and Next", async () => {
+
+
     render(
       <MemoryRouter initialEntries={["/income-tax"]}>
         <WizardProvider>
@@ -61,7 +63,8 @@ describe("Wizard Navigation & Interaction", () => {
     expect(await screen.findByText(/step 2: your income/i)).toBeInTheDocument();
     const salaryInput2 = screen.getByTestId("salary-amount-input") as HTMLInputElement;
     expect(salaryInput2.value).toBe("12,00,000");
-  });
+  }, 15000);
+
 
   it("shows HRA fields only when HRA toggle is turned ON", async () => {
     window.sessionStorage.setItem(

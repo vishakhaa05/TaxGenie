@@ -9,6 +9,7 @@ export interface CurrencyInputProps
   onValueChange?: (val: number) => void;
   hasError?: boolean;
   prefix?: string;
+  allowDecimals?: boolean;
 }
 
 export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
@@ -24,47 +25,121 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
       className = "",
       prefix = "₹",
       disabled = false,
+      allowDecimals = false,
+      inputMode,
       onBlur,
       onFocus,
       ...rest
     },
     ref
   ) => {
-    // Format display string with Indian grouping
+    // Helper to group integer part using Indian grouping
+    const groupIndianDigits = (intStr: string): string => {
+      if (!intStr) return "";
+      // Strip leading zeros unless it's just "0"
+      const normalized = intStr.replace(/^0+(?=\d)/, "");
+      if (normalized.length <= 3) return normalized;
+      const lastThree = normalized.slice(-3);
+      const otherDigits = normalized.slice(0, -3);
+      const formattedOthers = otherDigits.replace(/\B(?=(\d{2})+(?!\d))/g, ",");
+      return `${formattedOthers},${lastThree}`;
+    };
+
+    // Format display string from number
     const formatDisplay = (num: number | null | undefined): string => {
       if (num === null || num === undefined || num === 0) return "";
-      return formatINR(num);
+      if (!allowDecimals) {
+        return formatINR(num);
+      }
+      const parts = num.toString().split(".");
+      const formattedInt = groupIndianDigits(parts[0] || "0");
+      if (parts[1] !== undefined) {
+        return `${formattedInt}.${parts[1].slice(0, 2)}`;
+      }
+      return formattedInt;
     };
 
     const [displayVal, setDisplayVal] = useState<string>(() => formatDisplay(value));
 
     useEffect(() => {
+      // Avoid clobbering in-progress typing if the parsed value equals the incoming value
+      if (allowDecimals) {
+        const rawDigits = displayVal.replace(/,/g, "");
+        const currentNumeric = parseFloat(rawDigits) || 0;
+        if (value === currentNumeric && (displayVal.endsWith(".") || displayVal.endsWith(".0"))) {
+          return;
+        }
+      }
       setDisplayVal(formatDisplay(value));
-    }, [value]);
+    }, [value, allowDecimals]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const rawText = e.target.value;
-      // Extract digits only - strictly block negative signs, decimals, symbols
-      const digitsOnly = rawText.replace(/[^0-9]/g, "");
 
-      if (digitsOnly === "") {
+      if (!allowDecimals) {
+        // Extract digits only - strictly block negative signs, decimals, symbols
+        const digitsOnly = rawText.replace(/[^0-9]/g, "");
+
+        if (digitsOnly === "") {
+          setDisplayVal("");
+          onChange?.(0);
+          onValueChange?.(0);
+          return;
+        }
+
+        const numericVal = parseInt(digitsOnly, 10);
+        if (Number.isNaN(numericVal)) {
+          setDisplayVal("");
+          onChange?.(0);
+          onValueChange?.(0);
+          return;
+        }
+
+        setDisplayVal(formatINR(numericVal));
+        onChange?.(numericVal);
+        onValueChange?.(numericVal);
+        return;
+      }
+
+      // allowDecimals === true
+      // Strip any characters other than digits and decimal point
+      const cleaned = rawText.replace(/[^0-9.]/g, "");
+      if (cleaned === "" || cleaned === ".") {
+        if (cleaned === ".") {
+          setDisplayVal("0.");
+          onChange?.(0);
+          onValueChange?.(0);
+          return;
+        }
         setDisplayVal("");
         onChange?.(0);
         onValueChange?.(0);
         return;
       }
 
-      // Parse plain integer
-      const numericVal = parseInt(digitsOnly, 10);
-      if (Number.isNaN(numericVal)) {
-        setDisplayVal("");
-        onChange?.(0);
-        onValueChange?.(0);
-        return;
+      const dotIndex = cleaned.indexOf(".");
+      let intPart = "";
+      let decPart: string | null = null;
+
+      if (dotIndex !== -1) {
+        intPart = cleaned.slice(0, dotIndex);
+        // Take up to 2 decimal places, ignore any extra dots
+        decPart = cleaned.slice(dotIndex + 1).replace(/\./g, "").slice(0, 2);
+      } else {
+        intPart = cleaned;
       }
 
-      // Update formatted string
-      setDisplayVal(formatINR(numericVal));
+      const formattedInt = groupIndianDigits(intPart || "0");
+      let nextDisplay = formattedInt;
+      if (dotIndex !== -1) {
+        nextDisplay = `${formattedInt}.${decPart ?? ""}`;
+      }
+
+      const cleanNumString = decPart !== null ? `${intPart || "0"}.${decPart}` : intPart;
+      const parsed = parseFloat(cleanNumString);
+      const numericVal = Number.isNaN(parsed) ? 0 : parsed;
+
+      setDisplayVal(nextDisplay);
       onChange?.(numericVal);
       onValueChange?.(numericVal);
     };
@@ -72,16 +147,42 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
     const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
       e.preventDefault();
       const pastedText = e.clipboardData.getData("text");
-      const digitsOnly = pastedText.replace(/[^0-9]/g, "");
-      if (digitsOnly === "") return;
 
-      const numericVal = parseInt(digitsOnly, 10);
-      if (!Number.isNaN(numericVal)) {
-        setDisplayVal(formatINR(numericVal));
-        onChange?.(numericVal);
-        onValueChange?.(numericVal);
+      if (!allowDecimals) {
+        const digitsOnly = pastedText.replace(/[^0-9]/g, "");
+        if (digitsOnly === "") return;
+        const numericVal = parseInt(digitsOnly, 10);
+        if (!Number.isNaN(numericVal)) {
+          setDisplayVal(formatINR(numericVal));
+          onChange?.(numericVal);
+          onValueChange?.(numericVal);
+        }
+        return;
+      }
+
+      // allowDecimals === true
+      const cleaned = pastedText.replace(/[^0-9.]/g, "");
+      if (!cleaned) return;
+      const dotIndex = cleaned.indexOf(".");
+      let intPart = "";
+      let decPart: string | null = null;
+      if (dotIndex !== -1) {
+        intPart = cleaned.slice(0, dotIndex);
+        decPart = cleaned.slice(dotIndex + 1).replace(/\./g, "").slice(0, 2);
+      } else {
+        intPart = cleaned;
+      }
+      const formattedInt = groupIndianDigits(intPart || "0");
+      const nextDisplay = decPart !== null ? `${formattedInt}.${decPart}` : formattedInt;
+      const parsed = parseFloat(decPart !== null ? `${intPart || "0"}.${decPart}` : intPart);
+      if (!Number.isNaN(parsed)) {
+        setDisplayVal(nextDisplay);
+        onChange?.(parsed);
+        onValueChange?.(parsed);
       }
     };
+
+    const resolvedInputMode = inputMode ?? (allowDecimals ? "decimal" : "numeric");
 
     return (
       <div className="relative flex items-center w-full">
@@ -103,7 +204,7 @@ export const CurrencyInput = forwardRef<HTMLInputElement, CurrencyInputProps>(
           id={id}
           name={name}
           type="text"
-          inputMode="numeric"
+          inputMode={resolvedInputMode}
           autoComplete="off"
           disabled={disabled}
           value={displayVal}
