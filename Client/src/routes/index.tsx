@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {
   authenticationRoutePaths,
@@ -9,12 +10,25 @@ import BaseLayout from "@/layouts/base-layout";
 import AuthRoute from "./authRoute";
 import ProtectedRoute from "./protectedRoute";
 import useAuthExpiration from "@/hooks/use-auth-expiration";
+import RouteLoader from "@/components/ui/route-loader";
+
+const LandingPage = lazy(() => import("@/pages/landing/LandingPage"));
 
 function AppRoutes() {
   useAuthExpiration();
   return (
     <BrowserRouter>
       <Routes>
+        {/* Standalone Full-Page Landing Page matching Mockup */}
+        <Route
+          path="/landing"
+          element={
+            <Suspense fallback={<RouteLoader />}>
+              <LandingPage />
+            </Suspense>
+          }
+        />
+
         {/* Authentication routes (Login, Signup) */}
         <Route element={<AuthRoute />}>
           <Route element={<BaseLayout />}>
