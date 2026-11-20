@@ -40,7 +40,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
   const location = useLocation();
 
-  // Keep track of which accordion sub-menus are expanded
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     dashboard: true,
     incomeTax: true,
@@ -57,24 +56,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pagesItems: NavItem[] = [
     {
       key: "dashboard",
-      label: t("nav.dashboard"),
-      href: "/",
+      label: t("nav.dashboard", "Dashboard"),
+      href: "/overview",
       icon: LayoutDashboard,
       subItems: [
-        { label: t("nav.overview"), href: "/" },
-        { label: t("nav.taxSummary"), href: "/tax-summary" },
-        { label: t("nav.gstSummary"), href: "/gst-summary" },
+        { label: t("nav.overview", "Overview"), href: "/overview" },
+        { label: "Product Landing", href: "/landing" },
+        { label: t("nav.taxSummary", "Tax Summary"), href: "/tax-summary" },
+        { label: t("nav.gstSummary", "GST Summary"), href: "/gst-summary" },
       ],
     },
     {
       key: "incomeTax",
-      label: t("nav.incomeTax"),
+      label: t("nav.incomeTax", "Income Tax"),
       href: "/income-tax",
       icon: Calculator,
       subItems: [
-        { label: t("nav.calculator"), href: "/income-tax" },
-        { label: t("nav.compareRegimes"), href: "/income-tax/result" },
-        { label: t("nav.history"), href: "/income-tax/history" },
+        { label: t("nav.calculator", "Calculator"), href: "/income-tax" },
+        { label: t("nav.compareRegimes", "Compare Regimes"), href: "/income-tax/result" },
+        { label: t("nav.history", "Saved Calculations"), href: "/income-tax/history" },
       ],
     },
     {
@@ -88,6 +88,25 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         { label: t("nav.customers", "Customers"), href: "/invoices/customers" },
         { label: t("nav.businessProfile", "Business Profile"), href: "/invoices/settings" },
       ],
+    },
+    {
+      key: "aiAssistant",
+      label: t("nav.aiAssistant", "AI Tax Assistant"),
+      href: "/ai-advisor",
+      icon: Sparkles,
+      badge: "Gemini",
+    },
+    {
+      key: "deadlines",
+      label: t("nav.deadlines", "Tax Deadlines"),
+      href: "/deadlines",
+      icon: Calendar,
+    },
+    {
+      key: "learn",
+      label: t("nav.learn", "Tax Glossary (Learn)"),
+      href: "/learn",
+      icon: BookOpen,
     },
     {
       key: "transactions",
@@ -113,47 +132,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       href: "/tax-documents",
       icon: FolderLock,
     },
-    {
-      key: "reports",
-      label: "Reports & Statement",
-      href: "/reports",
-      icon: FileSpreadsheet,
-    },
-    {
-      key: "aiAssistant",
-      label: t("nav.aiAssistant"),
-      href: "/ai-advisor",
-      icon: Sparkles,
-      badge: "3",
-    },
-    {
-      key: "deadlines",
-      label: t("nav.deadlines"),
-      href: "/deadlines",
-      icon: Calendar,
-    },
-    {
-      key: "learn",
-      label: t("nav.learn"),
-      href: "/learn",
-      icon: BookOpen,
-    },
-  ];
-
-  const moreItems: NavItem[] = [
-    {
-      key: "account",
-      label: t("nav.account"),
-      href: "/account/profile",
-      icon: User,
-    },
-    {
-      key: "admin",
-      label: t("nav.admin"),
-      href: "/admin",
-      icon: ShieldCheck,
-      badge: "Phase 2",
-    },
   ];
 
   const renderNavGroup = (items: NavItem[]) => {
@@ -172,8 +150,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
               <div
                 className={`group flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition-all ${
                   isItemActive
-                    ? "bg-[#1E293B] text-white shadow-sm font-semibold"
-                    : "text-slate-400 hover:bg-[#1E293B]/60 hover:text-slate-200"
+                    ? "bg-[#0B3B2C] dark:bg-[#0D3B2E] text-white shadow-sm font-bold border border-[#10B981]/40"
+                    : "text-slate-400 hover:bg-[#132620] hover:text-slate-200"
                 }`}
               >
                 <NavLink
@@ -185,20 +163,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 >
                   <Icon
                     className={`w-4 h-4 transition-colors shrink-0 ${
-                      isItemActive ? "text-indigo-400" : "text-slate-400 group-hover:text-indigo-300"
+                      isItemActive ? "text-[#10B981] dark:text-[#34D399]" : "text-slate-400 group-hover:text-[#10B981]"
                     }`}
                   />
                   <span className="truncate">{item.label}</span>
                 </NavLink>
 
                 {item.badge && (
-                  <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 ${
-                      item.badge === "Phase 2"
-                        ? "bg-slate-800 text-slate-400 border border-slate-700"
-                        : "bg-indigo-500/20 text-indigo-300 border border-indigo-500/30"
-                    }`}
-                  >
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shrink-0 bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/30">
                     {item.badge}
                   </span>
                 )}
@@ -237,7 +209,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                           }}
                           className={`block py-1.5 px-2.5 rounded-lg text-xs transition-colors ${
                             isSubActive
-                              ? "text-indigo-300 font-semibold bg-indigo-500/10"
+                              ? "text-[#34D399] font-bold bg-[#10B981]/15"
                               : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
                           }`}
                         >
@@ -265,55 +237,46 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         />
       )}
 
-      {/* Sidebar container - Navy in BOTH modes */}
+      {/* Sidebar container - Dark Forest Green-Black in BOTH modes */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#0B1120] text-slate-300 border-r border-[#1E293B] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 bg-[#07130F] text-slate-300 border-r border-[#132620] flex flex-col transition-transform duration-200 ease-in-out lg:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Brand header */}
-        <div className="h-16 px-5 flex items-center justify-between border-b border-[#1E293B]">
-          <Logo url="/" theme="dark" />
+        <div className="h-16 px-5 flex items-center justify-between border-b border-[#132620]">
+          <Logo url="/landing" theme="dark" />
 
           <button
             type="button"
             onClick={onClose}
-            className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800"
-            aria-label="Close sidebar"
+            className="lg:hidden p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            aria-label="Close menu"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Navigation scrollable content */}
+        {/* Scrollable navigation body */}
         <div className="flex-1 overflow-y-auto px-3.5 py-4 space-y-6">
-          {/* Section: PAGES */}
           <div>
-            <p className="px-3 mb-2 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
-              {t("nav.pages")}
-            </p>
+            <span className="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 mb-2 block">
+              TAX & FINANCE MODULES
+            </span>
             {renderNavGroup(pagesItems)}
-          </div>
-
-          {/* Section: MORE */}
-          <div>
-            <p className="px-3 mb-2 text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
-              {t("nav.more")}
-            </p>
-            {renderNavGroup(moreItems)}
           </div>
         </div>
 
-        {/* Bottom card: CA assistance notice */}
-        <div className="p-3.5 border-t border-[#1E293B]">
-          <div className="p-3 rounded-xl bg-gradient-to-b from-[#1E293B]/80 to-[#131E30] border border-[#334155]/60 text-xs text-slate-300 space-y-1.5">
-            <div className="flex items-center gap-1.5 font-semibold text-indigo-300">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Need CA Verification?</span>
-            </div>
-            <p className="text-[11px] text-slate-400 leading-relaxed">
-              TaxGenie generates accurate estimates. Consult our network CAs for audit & filing.
-            </p>
+        {/* Bottom Profile / Quick Info Footer */}
+        <div className="p-3.5 border-t border-[#132620] bg-[#05100C]">
+          <div className="flex items-center justify-between text-xs text-slate-400 px-2 py-1">
+            <span className="flex items-center gap-1.5 font-medium">
+              <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+              FY 2026-27 Active
+            </span>
+            <Link to="/income-tax" className="text-[#34D399] font-bold hover:underline">
+              Calculate
+            </Link>
           </div>
         </div>
       </aside>
